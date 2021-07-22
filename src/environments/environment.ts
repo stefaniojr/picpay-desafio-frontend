@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  USER_SERVICE_API: "https://www.mocky.io/v2",
+  TRANSACTION_SERVICE_API: "https://run.mocky.io/v3",
 };
 
 /*

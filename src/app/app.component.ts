@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { users } from "./usuariosMock";
 import UserType from "./models/user";
+import { UserService } from "./services/user.service";
 
 @Component({
   selector: "app-root",
@@ -10,10 +10,13 @@ import UserType from "./models/user";
 export class AppComponent implements OnInit {
   title = "Desafio Picpay Front-end";
 
+  constructor(private userService: UserService) {}
+
   users: Array<UserType> = [];
 
   ngOnInit(): void {
-    this.users = users;
-    console.log(this.users);
+    this.userService.getUsers().subscribe((response) => {
+      this.users = response;
+    });
   }
 }
