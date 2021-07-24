@@ -1,0 +1,32 @@
+my-modal {
+  display: none;
+  .my-modal {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .my-modal-body {
+      border-radius: 15px;
+      background-color: #ffff;
+      min-width: 200px;
+      min-height: 130px;
+    }
+  }
+
+  .my-modal-background {
+    background-color: rgba(0, 0, 0, 0.068);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    backdrop-filter: blur(8px);
+    top: 0;
+    left: 0;
+    z-index: 900;
+  }
+}
