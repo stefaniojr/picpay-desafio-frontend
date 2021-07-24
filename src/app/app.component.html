@@ -7,11 +7,19 @@
       <div class="user-id-username">{{ user.username }}</div>
     </div>
 
-    <button type="button" class="pay-button">Pagar</button>
+    <button
+      type="button"
+      (click)="openPaymentModal('payment-modal', user)"
+      class="pay-button"
+    >
+      Pagar
+    </button>
   </div>
 </div>
 
-<my-modal></my-modal>
+<my-modal id="payment-modal">
+  <h1>Modal el</h1>
+</my-modal>
 
 <!-- <div class="modal-backdrop">
   <div class="modal">

@@ -30,3 +30,7 @@ my-modal {
     z-index: 900;
   }
 }
+
+body.my-modal-open {
+  overflow: hidden;
+}
