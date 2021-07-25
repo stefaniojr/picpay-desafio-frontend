@@ -7,11 +7,7 @@
       <div class="user-id-username">{{ user.username }}</div>
     </div>
 
-    <button
-      type="button"
-      (click)="openPaymentModal('payment-modal', user)"
-      class="pay-button"
-    >
+    <button type="button" (click)="openPaymentModal(user)" class="pay-button">
       Pagar
     </button>
   </div>
@@ -50,33 +46,14 @@
   </div>
 </my-modal>
 
-<!-- <div class="modal-backdrop">
+<my-modal id="receipt-modal">
   <div class="modal">
-    <div class="title">Pagamento para <span>Nome do Usuário</span></div>
+    <div class="title">Recibo de pagamento</div>
 
     <div class="content">
-      <input type="number" placeholder="R$ 0,00" />
-
-      <div class="cards">
-        <select>
-          <option selected>Cartão com final 0123</option>
-        </select>
-      </div>
-
-      <button type="button" class="pay-button">
-        Pagar
-      </button>
+      O pagamento
+      <strong>{{ approvalStatus !== "Aprovada" ? "não" : "" }}</strong> foi
+      concluido com sucesso.
     </div>
   </div>
-
-  <div class="modal">
-    <div class="title">
-      Recibo de pagamento
-    </div>
-
-    <div class="content">
-      O pagamento foi concluido com sucesso.<br />
-      O pagamento <strong>não</strong> foi concluido com sucesso.
-    </div>
-  </div>
-</div> -->
+</my-modal>

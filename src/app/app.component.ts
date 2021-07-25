@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   selectedUser: UserType;
   cards: CardListType;
   paymentForm: FormGroup;
+  approvalStatus: string;
 
   constructor(
     private userService: UserService,
@@ -37,10 +38,10 @@ export class AppComponent implements OnInit {
     });
   }
 
-  async openPaymentModal(modalId: string, user: UserType) {
+  async openPaymentModal(user: UserType) {
     this.cards = await this.userService.getUserCards(user.id);
     this.selectedUser = user;
-    this.modalService.open(modalId);
+    this.modalService.open("payment-modal");
   }
 
   async onSubmit() {
@@ -56,7 +57,10 @@ export class AppComponent implements OnInit {
         value: amount,
       })
       .subscribe((response) => {
-        console.log("response ->", response);
+        this.modalService.close("payment-modal");
+        const { status } = response;
+        this.approvalStatus = status;
+        this.modalService.open("receipt-modal");
       });
   }
 }
