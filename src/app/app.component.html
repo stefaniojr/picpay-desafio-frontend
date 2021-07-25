@@ -18,7 +18,26 @@
 </div>
 
 <my-modal id="payment-modal">
-  <h1>Modal el</h1>
+  <div class="modal">
+    <div class="title">
+      Pagamento para <span>{{ selectedUser?.name }}</span>
+    </div>
+
+    <div class="content">
+      <input type="number" placeholder="R$ 0,00" />
+
+      <div class="cards">
+        <select>
+          <option *ngFor="let card of cards" selected>
+            Cartão com final
+            {{ card.card_number.substr(card.card_number.length - 4) }}
+          </option>
+        </select>
+      </div>
+
+      <button type="button" class="pay-button">Pagar</button>
+    </div>
+  </div>
 </my-modal>
 
 <!-- <div class="modal-backdrop">

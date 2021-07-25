@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ModalService } from "./modal";
+import { CardListType } from "./models/card";
 import UserType from "./models/user";
 import { UserService } from "./services/user.service";
 
@@ -10,6 +11,8 @@ import { UserService } from "./services/user.service";
 })
 export class AppComponent implements OnInit {
   title = "Desafio Picpay Front-end";
+  selectedUser: UserType;
+  cards: CardListType;
 
   constructor(
     private userService: UserService,
@@ -24,7 +27,9 @@ export class AppComponent implements OnInit {
     });
   }
 
-  openPaymentModal(modalId: string, user: UserType) {
+  async openPaymentModal(modalId: string, user: UserType) {
+    this.cards = await this.userService.getUserCards(user.id);
+    this.selectedUser = user;
     this.modalService.open(modalId);
   }
 }
