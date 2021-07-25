@@ -23,20 +23,30 @@
       Pagamento para <span>{{ selectedUser?.name }}</span>
     </div>
 
-    <div class="content">
-      <input type="number" placeholder="R$ 0,00" />
+    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="content">
+      <label for="amount">Valor</label>
+      <input
+        id="amount"
+        type="text"
+        formControlName="amount"
+        placeholder="R$ 0,00"
+        #inputAmount
+        currencyMask
+        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+      />
 
       <div class="cards">
-        <select>
-          <option *ngFor="let card of cards" selected>
+        <label for="card-number">Cartão</label>
+        <select id="card-number" formControlName="cardNumber">
+          <option *ngFor="let card of cards" [value]="card.card_number">
             Cartão com final
             {{ card.card_number.substr(card.card_number.length - 4) }}
           </option>
         </select>
       </div>
 
-      <button type="button" class="pay-button">Pagar</button>
-    </div>
+      <button type="submit" class="pay-button">Pagar</button>
+    </form>
   </div>
 </my-modal>
 
