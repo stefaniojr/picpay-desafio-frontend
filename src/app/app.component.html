@@ -1,15 +1,19 @@
 <div class="users">
-  <div *ngFor="let user of users" class="user">
-    <img [src]="user.img" />
-    <div class="info-wrapper">
-      <div class="user-name">{{ user.name }}</div>
+  <div *ngFor="let user of users" class="user-container">
+    <div class="user">
+      <div class="user-img-container">
+        <img [src]="user.img" />
+      </div>
+      <div class="info-wrapper">
+        <div class="user-name">{{ user.name }}</div>
 
-      <div class="user-id-username">{{ user.username }}</div>
+        <div class="user-id-username">{{ user.username }}</div>
+      </div>
+
+      <button type="button" (click)="openPaymentModal(user)" class="pay-button">
+        Pagar
+      </button>
     </div>
-
-    <button type="button" (click)="openPaymentModal(user)" class="pay-button">
-      Pagar
-    </button>
   </div>
 </div>
 
@@ -20,18 +24,20 @@
     </div>
 
     <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="content">
-      <label for="amount">Valor</label>
-      <input
-        id="amount"
-        type="text"
-        formControlName="amount"
-        placeholder="R$ 0,00"
-        #inputAmount
-        currencyMask
-        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
-      />
+      <div class="input-container">
+        <label for="amount">Valor</label>
+        <input
+          id="amount"
+          type="text"
+          formControlName="amount"
+          placeholder="R$ 0,00"
+          #inputAmount
+          currencyMask
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+        />
+      </div>
 
-      <div class="cards">
+      <div class="input-container">
         <label for="card-number">Cartão</label>
         <select id="card-number" formControlName="cardNumber">
           <option *ngFor="let card of cards" [value]="card.card_number">
@@ -41,7 +47,9 @@
         </select>
       </div>
 
-      <button type="submit" class="pay-button">Pagar</button>
+      <div class="button-container">
+        <button type="submit" class="pay-button">Pagar</button>
+      </div>
     </form>
   </div>
 </my-modal>

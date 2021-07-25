@@ -1,86 +1,100 @@
+$primary-color-0: #03a63c;
+$primary-color-1: #52d974;
+$secondary-color-0: #048a59;
+$black-1: #273d40;
+$black-0: #1c5259;
+$blackground: #ffff;
+$foreground: #f4f4f4;
+$border-color: rgba(0, 0, 0, 0.05);
+
 /* List of Users */
-
-.user {
-  background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
-  box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
-  color: #fff;
-  padding: 20px 40px;
-
-  display: flex;
-  align-items: center;
+.users {
+  padding-top: 2rem;
 }
 
-.user > img {
+.user-container {
+  background-color: $blackground;
+  display: flex;
+  justify-content: center;
+}
+
+.user {
+  background: $foreground;
+  width: 95%;
+  color: $black-1;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  border: solid 2px $border-color;
+  box-shadow: 0px 0px 15px 8px $border-color;
+}
+
+.user > .user-img-container {
   border-radius: 50%;
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient($primary-color-1, $secondary-color-0);
+}
+
+.user > .user-img-container > img {
+  width: 90%;
+  border-radius: 50%;
 }
 
 .user > .info-wrapper {
   margin-left: 16px;
 }
-
-.user > .pay-button {
+.pay-button {
   margin-left: auto;
+  background: $primary-color-0;
+  border: none;
+  padding: 15px 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #ffff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pay-button:hover {
+  background: $primary-color-1;
 }
 
 /* Payment Modal */
-.modal-backdrop {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  height: 100vh;
-  width: 100vw;
-}
-
-.modal-backdrop.hidden {
-  display: none;
-}
-
-.modal-backdrop:after {
-  content: "";
-
-  background: rgba(0, 0, 0, 0.5);
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-}
 
 .modal {
-  background: #fff;
-  border-radius: 8px;
+  background: $blackground;
+  border-radius: 4px;
   overflow: hidden;
   width: 420px;
 }
 
 .modal > .title {
-  background: #474971;
-  color: #ffffff;
+  background: $primary-color-1;
+  color: $black-0;
   font-weight: 500;
   font-size: 16px;
   padding: 16px 24px;
 }
 
 .modal > .title > span {
-  color: #cddc39;
+  color: $black-1;
+  font-weight: bold;
 }
 
 .modal > .content {
   padding: 32px;
-  text-align: center;
 }
 
-.modal > .content > input {
+.modal > .content > .input-container > input {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 32px;
@@ -88,20 +102,24 @@
   padding: 0 8px;
 }
 
-.modal > .content > .cards > select {
+.modal > .content > .input-container {
+  display: flex;
+  flex-direction: column;
+  label {
+    margin: 10px 0px;
+  }
+}
+
+.modal > .content > .input-container > select {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 32px;
   height: 48px;
-  margin-top: 12px;
 }
 
-.modal > .content > button {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 32px;
-  height: 48px;
-  padding: 0 8px;
+.modal > .content > .button-container {
   margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
 }
