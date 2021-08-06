@@ -4,7 +4,7 @@ export interface Task {
     username: string,
     title: string,
     value: number,
-    date: string,
+    date: Date,
     image: string,
     isPayed: boolean
 }
