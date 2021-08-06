@@ -10,10 +10,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MeusPagamentosComponent } from './components/meus-pagamentos/meus-pagamentos.component';
 import { AppComponent } from './app.component';
 import { MatSortModule } from '@angular/material/sort';
+import { DateFormatPipe } from './pipes/date-format.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     MeusPagamentosComponent,
+    DateFormatPipe,
   ],
   imports: [
     BrowserModule,

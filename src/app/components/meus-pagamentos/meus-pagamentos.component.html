@@ -16,7 +16,8 @@
             </ng-container>
             <ng-container matColumnDef="date">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Data </th>
-                <td mat-cell *matCellDef="let task"> {{task.date}} </td>
+                <td mat-cell *matCellDef="let task"> {{task.date | dateFormat}}<br><span class="time">{{task.date |
+                        date: 'shortTime'}}</span></td>
             </ng-container>
             <ng-container matColumnDef="value">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor </th>
