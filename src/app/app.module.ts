@@ -1,16 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule  } from '@angular/core';
+
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module'
+import ptBr from '@angular/common/locales/pt';
 
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MeusPagamentosComponent } from './components/meus-pagamentos/meus-pagamentos.component';
 import { AppComponent } from './app.component';
 import { MatSortModule } from '@angular/material/sort';
 import { DateFormatPipe } from './pipes/date-format.pipe';
+
+registerLocaleData(ptBr);
+import { registerLocaleData } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +32,10 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

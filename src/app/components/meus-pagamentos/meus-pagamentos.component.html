@@ -21,7 +21,7 @@
             </ng-container>
             <ng-container matColumnDef="value">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor </th>
-                <td mat-cell *matCellDef="let task"> {{task.value}} </td>
+                <td mat-cell *matCellDef="let task"> {{task.value | currency}} </td>
             </ng-container>
             <ng-container matColumnDef="isPayed">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Pago </th>
