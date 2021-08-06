@@ -1,6 +1,6 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,7 +12,14 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
-  all = (): Observable<Task[]> => {
-    return this.http.get<Task[]>(this.endpoint)
+  find = (page: number, limit: number = 5, sort: string = '', order: string = ''): Observable<any> => {
+    return this.http.get<any>(this.endpoint, {
+      observe: 'response', params: new HttpParams()
+        .set('_page', page + 1)
+        .set('_limit', limit)
+        .set('_sort', sort)
+        .set('_order', order)
+    })
   }
+
 }

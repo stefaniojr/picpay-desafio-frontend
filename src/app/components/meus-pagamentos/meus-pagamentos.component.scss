@@ -1,0 +1,41 @@
+.meuspagamentos {
+
+  table {
+    width: 100%;
+  }
+
+  tbody>tr:hover {
+    background-color: #ddd !important;
+  }
+
+  tbody>tr:nth-child(2) {
+    background-color: green;
+  }
+
+  td {
+    padding: 20px;
+
+    .username {
+      color     : #69788C;
+      margin-top: 10px;
+      font-size : 13px;
+    }
+  }
+
+  th {
+    font-weight  : bold;
+    font-size    : 14px;
+    border-bottom: 2px solid #CFDCE5;
+  }
+
+  tr:nth-child(even) {
+    background-color: #F5F8FA;
+  }
+
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  border: none;
+}

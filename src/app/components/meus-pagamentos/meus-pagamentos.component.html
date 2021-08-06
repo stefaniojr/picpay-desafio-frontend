@@ -1,0 +1,33 @@
+<section class="container">
+    <div class="meuspagamentos box">
+        <h1>Meus Pagamentos</h1>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" [length]="totalItems" [pageSize]="5" (page)="pageChanged()"
+            showFirstLastButtons firstPageLabel="Próxima página">
+        </mat-paginator>
+        <table mat-table [dataSource]="tasks" matSort class="" (matSortChange)="sortData($event)">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Usuário</th>
+                <td mat-cell *matCellDef="let task"> {{task.name}} <br> <span class="username">@{{task.username}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Título </th>
+                <td mat-cell *matCellDef="let task"> {{task.title}} </td>
+            </ng-container>
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Data </th>
+                <td mat-cell *matCellDef="let task"> {{task.date}} </td>
+            </ng-container>
+            <ng-container matColumnDef="value">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor </th>
+                <td mat-cell *matCellDef="let task"> {{task.value}} </td>
+            </ng-container>
+            <ng-container matColumnDef="isPayed">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Pago </th>
+                <td mat-cell *matCellDef="let task"> {{task.isPayed}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</section>
