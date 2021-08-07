@@ -12,7 +12,7 @@ import { MatSort } from '@angular/material/sort';
 export class MeusPagamentosComponent implements OnInit, AfterViewInit {
 
   tasks: Task[] = []
-  displayedColumns: string[] = ['name', 'title', 'date', 'value', 'isPayed']
+  displayedColumns: string[] = ['name', 'title', 'date', 'value', 'isPayed', 'edit-delete']
   dataSource: MatTableDataSource<Task>
   totalItems: number = 0
   pageSize: number = 0

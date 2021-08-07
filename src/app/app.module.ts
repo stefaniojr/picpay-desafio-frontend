@@ -9,6 +9,7 @@ import ptBr from '@angular/common/locales/pt';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MeusPagamentosComponent } from './components/meus-pagamentos/meus-pagamentos.component';
@@ -18,12 +19,14 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
 
 registerLocaleData(ptBr);
 import { registerLocaleData } from '@angular/common';
+import { VisibleOnHoverDirective } from './directives/visible-on-hover.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     MeusPagamentosComponent,
     DateFormatPipe,
+    VisibleOnHoverDirective,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { registerLocaleData } from '@angular/common';
     MatPaginatorModule,
     MatSortModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
