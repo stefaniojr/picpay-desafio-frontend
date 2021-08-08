@@ -29,3 +29,16 @@ body {
   justify-content: center;
   padding: 40px;
 }
+
+h1 {
+  margin: 0 !important;
+}
+
+.row {
+  display        : flex;
+  justify-content: space-between;
+}
+
+.mat-dialog-container {
+  padding: 50px !important;
+}

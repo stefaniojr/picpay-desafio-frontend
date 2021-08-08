@@ -10,6 +10,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MeusPagamentosComponent } from './components/meus-pagamentos/meus-pagamentos.component';
@@ -20,6 +26,8 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
 registerLocaleData(ptBr);
 import { registerLocaleData } from '@angular/common';
 import { VisibleOnHoverDirective } from './directives/visible-on-hover.directive';
+import { DialogManagerComponent, DialogTemplateComponent } from './components/meus-pagamentos/dialog-manager/dialog-manager.component';
+import { NgxCurrencyModule } from "ngx-currency";
 
 @NgModule({
   declarations: [
@@ -27,6 +35,8 @@ import { VisibleOnHoverDirective } from './directives/visible-on-hover.directive
     MeusPagamentosComponent,
     DateFormatPipe,
     VisibleOnHoverDirective,
+    DialogManagerComponent,
+    DialogTemplateComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +48,14 @@ import { VisibleOnHoverDirective } from './directives/visible-on-hover.directive
     MatSortModule,
     MatCheckboxModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxCurrencyModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },

@@ -1,6 +1,11 @@
 <section class="container">
     <div class="meuspagamentos box">
-        <h1>Meus Pagamentos</h1>
+
+        <div class="row">
+            <h1>Meus Pagamentos</h1>
+            <app-dialog-manager></app-dialog-manager>
+        </div>
+
         <mat-paginator [pageSizeOptions]="[5, 10, 20]" [length]="totalItems" [pageSize]="5" (page)="pageChanged()"
             showFirstLastButtons firstPageLabel="Próxima página">
         </mat-paginator>
