@@ -9,7 +9,7 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: "/payments",
+    path: "payments",
     component: PaymentsComponent,
   },
 ];
