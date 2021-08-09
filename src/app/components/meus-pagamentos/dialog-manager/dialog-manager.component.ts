@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Task } from 'src/app/interfaces/task';
 
@@ -35,16 +36,39 @@ export class DialogManagerComponent {
 })
 export class DialogTemplateComponent {
 
+  pagamentoForm: FormGroup = this.formBuilder.group({
+    nameControl: ['', [Validators.required, Validators.minLength(3)]],
+    valueControl: ['', Validators.required],
+    dateControl: ['', Validators.required],
+    titleControl: ['', [Validators.required, Validators.minLength(6)]],
+  })
+
   constructor(
     public dialogRef: MatDialogRef<DialogTemplateComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Task) { }
+    @Inject(MAT_DIALOG_DATA) public data: Task, private formBuilder: FormBuilder) { }
+
+  get name() { return this.pagamentoForm.get('nameControl'); }
+  get value() { return this.pagamentoForm.get('valueControl'); }
+  get date() { return this.pagamentoForm.get('dateControl'); }
+  get title() { return this.pagamentoForm.get('titleControl'); }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  clearInput = (inputName: string) => {
-    this.data[inputName] = undefined
+  clearName = () => {
+    this.name.setValue('')
+  }
+
+  clearValue = () => {
+    this.value.setValue('')
+  }
+
+  clearTitle = () => {
+    this.title.setValue('')
+  }
+
+  onSubmit = () => {
   }
 
 }

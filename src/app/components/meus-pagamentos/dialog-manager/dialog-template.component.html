@@ -1,41 +1,45 @@
 <h2>Adicionar pagamento</h2>
 
-<div class="row space-rows">
-    <mat-form-field>
-        <mat-label>Usuário</mat-label>
-        <input #usuarioInput matInput type="text" [(ngModel)]="data.name">
-        <button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('name')">
-            <mat-icon *ngIf="data.name !== ''">close</mat-icon>
-        </button>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Valor</mat-label>
-        <input matInput type="text" [(ngModel)]="data.value" currencyMask
-            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
-        <button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('value')">
-            <mat-icon *ngIf="data.value">close</mat-icon>
-        </button>
-    </mat-form-field>
-</div>
+<form [formGroup]="pagamentoForm" (ngSubmit)="onSubmit()">
 
-<div class="row">
-    <mat-form-field>
-        <mat-label>Data</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="data.date" (click)="picker.open()"
-            (focus)="picker.open()">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Título</mat-label>
-        <input matInput type="text" [(ngModel)]="data.title">
-        <button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('title')">
-            <mat-icon *ngIf="data.title !== ''">close</mat-icon>
-        </button>
-    </mat-form-field>
-</div>
+    <div class="row space-rows">
+        <mat-form-field>
+            <mat-label>Usuário</mat-label>
+            <input matInput type="text" formControlName="nameControl">
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="clearName()">
+                <mat-icon *ngIf="name.value !== ''">close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Valor</mat-label>
+            <input matInput type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+                formControlName="valueControl">
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue()">
+                <mat-icon *ngIf="value.value">close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
 
-<div class="dialog-buttons">
-    <button mat-raised-button color="accent" (click)="onNoClick()">Cancelar</button>
-    <button mat-raised-button color="primary">Salvar</button>
-</div>
+    <div class="row">
+        <mat-form-field>
+            <mat-label>Data</mat-label>
+            <input matInput [matDatepicker]="picker" (click)="picker.open()" (focus)="picker.open()"
+                formControlName="dateControl">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Título</mat-label>
+            <input matInput type="text" formControlName="titleControl">
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="clearTitle()">
+                <mat-icon *ngIf="title.value !== ''">close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <div class="dialog-buttons">
+        <button mat-raised-button color="accent" (click)="onNoClick()">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!pagamentoForm.valid">Salvar</button>
+    </div>
+
+</form>

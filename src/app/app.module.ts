@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module'
@@ -55,7 +56,8 @@ import { NgxCurrencyModule } from "ngx-currency";
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgxCurrencyModule
+    NgxCurrencyModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
