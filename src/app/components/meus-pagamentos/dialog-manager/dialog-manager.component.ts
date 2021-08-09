@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Task } from 'src/app/interfaces/task';
+import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-dialog-manager',
