@@ -19,6 +19,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { MeusPagamentosComponent } from './components/meus-pagamentos/meus-pagamentos.component';
 import { AppComponent } from './app.component';
 import { MatSortModule } from '@angular/material/sort';
@@ -57,7 +58,8 @@ import { NgxCurrencyModule } from "ngx-currency";
     MatDatepickerModule,
     MatNativeDateModule,
     NgxCurrencyModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
