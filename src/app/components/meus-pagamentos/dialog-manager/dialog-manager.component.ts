@@ -1,3 +1,4 @@
+import { TaskService } from './../../../services/task.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -47,7 +48,7 @@ export class DialogTemplateComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DialogTemplateComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Task, private formBuilder: FormBuilder) {
+    @Inject(MAT_DIALOG_DATA) public data: Task, private formBuilder: FormBuilder, private taskService: TaskService) {
 
     this.maxDatepickerFilter = new Date()
 
@@ -62,7 +63,24 @@ export class DialogTemplateComponent {
     this.dialogRef.close();
   }
 
+  addTask = (task: Task) => {
+    this.taskService.add(task).subscribe(
+      response => { this.dialogRef.close() },
+      error => { }
+    )
+  }
+
   onSubmit = () => {
+
+    const newTask = new Task()
+
+    newTask.name = this.name.value
+    newTask.value = this.value.value
+    newTask.date = new Date(this.date.value).toISOString()
+    newTask.title = this.title.value
+
+    this.addTask(newTask)
+
   }
 
 }

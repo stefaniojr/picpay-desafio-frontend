@@ -4,7 +4,7 @@ export class Task {
     username: string
     title: string
     value: number
-    date: Date
+    date: string
     image: string
     isPayed: boolean
 }

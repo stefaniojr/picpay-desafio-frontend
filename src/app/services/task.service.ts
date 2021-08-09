@@ -1,7 +1,8 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Task } from '../models/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,12 @@ import { Observable } from 'rxjs';
 export class TaskService {
 
   endpoint = `${environment.API}/tasks`
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +27,10 @@ export class TaskService {
         .set('_sort', sort)
         .set('_order', order)
     })
+  }
+
+  add = (task: Task): Observable<Task> => {
+    return this.http.post<Task>(this.endpoint, task, this.httpOptions)
   }
 
 }
