@@ -28,8 +28,9 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
 registerLocaleData(ptBr);
 import { registerLocaleData } from '@angular/common';
 import { VisibleOnHoverDirective } from './directives/visible-on-hover.directive';
-import { DialogManagerComponent, DialogTemplateComponent } from './components/meus-pagamentos/dialog-manager/dialog-manager.component';
+import { DialogManagerComponent } from './components/meus-pagamentos/dialog-manager/dialog-manager.component';
 import { NgxCurrencyModule } from "ngx-currency";
+import { DialogTemplateComponent } from './components/meus-pagamentos/dialog-template/dialog-template.component';
 
 @NgModule({
   declarations: [
