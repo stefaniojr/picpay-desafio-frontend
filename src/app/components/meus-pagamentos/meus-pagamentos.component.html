@@ -37,13 +37,15 @@
             <ng-container matColumnDef="edit-delete">
                 <th mat-header-cell *matHeaderCellDef class="icons-column"></th>
                 <td mat-cell *matCellDef="let task" class="icons-column">
-                    <div class="action-icons-cell row">
-                        <button mat-button color="primary">
-                            <mat-icon class="icon" aria-hidden="false" aria-label="Editar">edit</mat-icon>
-                        </button>
-                        <button mat-button color="primary">
-                            <mat-icon class="icon" aria-hidden="false" aria-label="Editar">delete</mat-icon>
-                        </button>
+                    <div class="action-icons-cell">
+                        <div class="row">
+                            <button mat-mini-fab color="primary">
+                                <mat-icon class="icon" aria-hidden="false" aria-label="Editar">edit</mat-icon>
+                            </button>
+                            <button mat-mini-fab color="primary">
+                                <mat-icon class="icon" aria-hidden="false" aria-label="Editar">delete</mat-icon>
+                            </button>
+                        </div>
                     </div>
                 </td>
             </ng-container>
