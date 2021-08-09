@@ -36,6 +36,8 @@ export class DialogManagerComponent {
 })
 export class DialogTemplateComponent {
 
+  maxDatepickerFilter: Date
+
   pagamentoForm: FormGroup = this.formBuilder.group({
     nameControl: ['', [Validators.required, Validators.minLength(3)]],
     valueControl: ['', Validators.required],
@@ -45,7 +47,11 @@ export class DialogTemplateComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DialogTemplateComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Task, private formBuilder: FormBuilder) { }
+    @Inject(MAT_DIALOG_DATA) public data: Task, private formBuilder: FormBuilder) {
+
+    this.maxDatepickerFilter = new Date()
+
+  }
 
   get name() { return this.pagamentoForm.get('nameControl'); }
   get value() { return this.pagamentoForm.get('valueControl'); }

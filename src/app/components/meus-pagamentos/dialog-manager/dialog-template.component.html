@@ -17,7 +17,7 @@
     <div class="row">
         <mat-form-field>
             <mat-label>Data</mat-label>
-            <input matInput [matDatepicker]="picker" (click)="picker.open()" (focus)="picker.open()"
+            <input matInput [matDatepicker]="picker" [max]="maxDatepickerFilter" (click)="picker.open()" (focus)="picker.open()"
                 formControlName="dateControl" required>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
