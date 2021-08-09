@@ -59,7 +59,7 @@ import { NgxCurrencyModule } from "ngx-currency";
     MatNativeDateModule,
     NgxCurrencyModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({ positionClass: 'toast-top-center' }),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },

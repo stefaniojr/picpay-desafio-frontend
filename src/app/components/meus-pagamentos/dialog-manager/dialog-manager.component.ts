@@ -3,6 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Task } from 'src/app/models/task.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dialog-manager',
@@ -48,7 +49,8 @@ export class DialogTemplateComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DialogTemplateComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Task, private formBuilder: FormBuilder, private taskService: TaskService) {
+    @Inject(MAT_DIALOG_DATA) public data: Task, private formBuilder: FormBuilder, private taskService: TaskService,
+    private tostr: ToastrService) {
 
     this.maxDatepickerFilter = new Date()
 
@@ -65,8 +67,11 @@ export class DialogTemplateComponent {
 
   addTask = (task: Task) => {
     this.taskService.add(task).subscribe(
-      response => { this.dialogRef.close() },
-      error => { }
+      response => {
+        this.dialogRef.close()
+        this.tostr.success('Salvo com sucesso', 'Sucesso')
+      },
+      error => { this.tostr.error('Falha ao salvar', 'Erro') }
     )
   }
 
