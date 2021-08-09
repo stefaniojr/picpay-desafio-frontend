@@ -5,18 +5,12 @@
     <div class="row space-rows">
         <mat-form-field>
             <mat-label>Usuário</mat-label>
-            <input matInput type="text" formControlName="nameControl">
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="clearName()">
-                <mat-icon *ngIf="name.value !== ''">close</mat-icon>
-            </button>
+            <input matInput type="text" formControlName="nameControl" required>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Valor</mat-label>
             <input matInput type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
-                formControlName="valueControl">
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue()">
-                <mat-icon *ngIf="value.value">close</mat-icon>
-            </button>
+                formControlName="valueControl" required>
         </mat-form-field>
     </div>
 
@@ -24,16 +18,13 @@
         <mat-form-field>
             <mat-label>Data</mat-label>
             <input matInput [matDatepicker]="picker" (click)="picker.open()" (focus)="picker.open()"
-                formControlName="dateControl">
+                formControlName="dateControl" required>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Título</mat-label>
-            <input matInput type="text" formControlName="titleControl">
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="clearTitle()">
-                <mat-icon *ngIf="title.value !== ''">close</mat-icon>
-            </button>
+            <input matInput type="text" formControlName="titleControl" required>
         </mat-form-field>
     </div>
 

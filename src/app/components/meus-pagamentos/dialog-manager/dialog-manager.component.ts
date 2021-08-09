@@ -56,18 +56,6 @@ export class DialogTemplateComponent {
     this.dialogRef.close();
   }
 
-  clearName = () => {
-    this.name.setValue('')
-  }
-
-  clearValue = () => {
-    this.value.setValue('')
-  }
-
-  clearTitle = () => {
-    this.title.setValue('')
-  }
-
   onSubmit = () => {
   }
 
