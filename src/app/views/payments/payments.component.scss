@@ -1,0 +1,27 @@
+h1 {
+  font-size: 2.25rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  margin: 2rem;
+}
+
+.add-payment {
+  margin: 1rem 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.payments-table {
+  border-radius: 20px;
+  margin: 1rem 2rem;
+  box-shadow: 0px 2px 4px rgba(4, 38, 82, 0.06);
+
+  .mat-paginator {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .mat-table {
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+  }
+}

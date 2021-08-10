@@ -1,9 +1,13 @@
 <app-toolbar></app-toolbar>
-<div>
+<h1>Meus pagamentos</h1>
+<div class="add-payment">
+  <button mat-raised-button color="primary">ADICIONAR PAGAMENTO</button>
+</div>
+<div class="payments-table">
   <mat-paginator
     [length]="170"
     [pageSize]="5"
-    [pageSizeOptions]="[5, 10]"
+    [pageSizeOptions]="[5, 10, 20]"
     (page)="pageEvent = $event; onPaginateChange($event)"
   ></mat-paginator>
   <mat-table [dataSource]="dataSource">
