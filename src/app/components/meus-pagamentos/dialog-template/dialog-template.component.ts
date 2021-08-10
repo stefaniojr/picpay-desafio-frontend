@@ -40,7 +40,6 @@ export class DialogTemplateComponent implements OnInit {
     if (this.data.operation === 'delete') {
       this.dialogTitle = 'Deletar'
       this.buttonText = 'Deletar'
-      this.pagamentoForm.patchValue(this.data.task)
     }
   }
 
