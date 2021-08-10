@@ -21,6 +21,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { PaymentsComponent } from "./views/payments/payments.component";
 import { LoginFormComponent } from "./shared/components/login-form/login-form.component";
 import { ToolbarComponent } from "./shared/components/toolbar/toolbar.component";
+import { LocalDateTimePipe } from "./shared/pipes/local-date-time.pipe";
+import { CurrencyFormatPipe } from './shared/pipes/currency-format.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ToolbarComponent } from "./shared/components/toolbar/toolbar.component"
     PaymentsComponent,
     LoginFormComponent,
     ToolbarComponent,
+    LocalDateTimePipe,
+    CurrencyFormatPipe,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,7 @@ import { ToolbarComponent } from "./shared/components/toolbar/toolbar.component"
     MatTableModule,
     MatPaginatorModule,
   ],
-  providers: [],
+  providers: [LocalDateTimePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
