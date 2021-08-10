@@ -12,6 +12,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from "@angular/material/input";
+import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
 
 // Components
 import { LoginComponent } from "./views/login/login.component";
@@ -35,6 +37,8 @@ import { LoginFormComponent } from "./shared/components/login-form/login-form.co
     MatIconModule,
     MatButtonModule,
     MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
