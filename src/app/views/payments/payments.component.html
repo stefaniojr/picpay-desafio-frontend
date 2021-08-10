@@ -26,12 +26,14 @@
 
     <ng-container matColumnDef="date">
       <mat-header-cell *matHeaderCellDef>Data</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.date }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row.date | localDateTime }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="value">
       <mat-header-cell *matHeaderCellDef>Valor</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.value }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{
+        row.value | currency: "BRL":"symbol":"1.1-2":"pt"
+      }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="isPayed">

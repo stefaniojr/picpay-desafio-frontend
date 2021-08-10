@@ -1,10 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { PageEvent } from "@angular/material/paginator";
-import { MatTableDataSource } from "@angular/material/table";
+import { registerLocaleData } from "@angular/common";
+import localePt from "@angular/common/locales/pt";
 import { Router } from "@angular/router";
 import { map, tap } from "rxjs/operators";
 import { IPayments } from "src/app/shared/interfaces/Payments";
 import { PaymentsService } from "src/app/shared/services/payments.service";
+
+registerLocaleData(localePt, "pt");
 
 @Component({
   selector: "app-payments",
