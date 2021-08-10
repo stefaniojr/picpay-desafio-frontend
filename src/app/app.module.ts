@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -31,6 +32,9 @@ import { VisibleOnHoverDirective } from './directives/visible-on-hover.directive
 import { DialogManagerComponent } from './components/meus-pagamentos/dialog-manager/dialog-manager.component';
 import { NgxCurrencyModule } from "ngx-currency";
 import { DialogTemplateComponent } from './components/meus-pagamentos/dialog-template/dialog-template.component';
+import { LoginComponent } from './components/login/login.component';
+import { HeaderComponent } from './components/template/header/header.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,9 @@ import { DialogTemplateComponent } from './components/meus-pagamentos/dialog-tem
     DateFormatPipe,
     VisibleOnHoverDirective,
     DialogManagerComponent,
-    DialogTemplateComponent
+    DialogTemplateComponent,
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +67,8 @@ import { DialogTemplateComponent } from './components/meus-pagamentos/dialog-tem
     NgxCurrencyModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({ positionClass: 'toast-top-center' }),
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
