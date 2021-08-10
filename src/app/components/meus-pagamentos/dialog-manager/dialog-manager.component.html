@@ -1,1 +1,10 @@
-<button mat-raised-button color="primary" (click)="openDialog()">+ ADICIONAR PAGAMENTO</button>
+<button *ngIf="operation==='create'" mat-raised-button color="primary" (click)="openDialog()">+ ADICIONAR
+    PAGAMENTO</button>
+
+<button *ngIf="operation==='edit'" mat-mini-fab color="primary" (click)="openDialog()">
+    <mat-icon class="icon" aria-hidden="false" aria-label="Editar">edit</mat-icon>
+</button>
+
+<button *ngIf="operation==='delete'" mat-mini-fab color="primary" (click)="openDialog()">
+    <mat-icon class="icon" aria-hidden="false" aria-label="Deletar">delete</mat-icon>
+</button>

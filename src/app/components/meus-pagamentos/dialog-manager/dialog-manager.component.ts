@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogTemplateComponent } from '../dialog-template/dialog-template.component';
 
@@ -10,19 +10,16 @@ import { DialogTemplateComponent } from '../dialog-template/dialog-template.comp
 })
 export class DialogManagerComponent {
 
-  name: string = ''
-  value: number
-  date: Date
-  title: string = ''
-
+  @Input() task: Task
+  @Input() operation: string = ''
   constructor(public dialog: MatDialog) { }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogTemplateComponent, {
       width: '550px',
-      data: { name: this.name, value: this.value, date: this.date, title: this.title }
+      data: { task: this.task, operation: this.operation }
     });
-
+    
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });

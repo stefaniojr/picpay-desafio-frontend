@@ -33,4 +33,12 @@ export class TaskService {
     return this.http.post<Task>(this.endpoint, task, this.httpOptions)
   }
 
+  update = (task: Task): Observable<Task> => {
+    return this.http.put<Task>(`${this.endpoint}/${task.id}`, task, this.httpOptions)
+  }
+
+  delete = (task: Task): Observable<any> => {
+    return this.http.delete(`${this.endpoint}/${task.id}`)
+  }
+
 }

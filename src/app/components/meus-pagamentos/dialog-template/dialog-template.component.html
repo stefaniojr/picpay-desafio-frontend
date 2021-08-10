@@ -1,36 +1,49 @@
-<h2>Adicionar pagamento</h2>
+<div *ngIf="isNotOperationDelete() else deleteDialog">
 
-<form [formGroup]="pagamentoForm" (ngSubmit)="onSubmit()">
+    <h2>{{ dialogTitle }} pagamento</h2>
 
-    <div class="row space-rows">
-        <mat-form-field>
-            <mat-label>Usuário</mat-label>
-            <input matInput type="text" formControlName="nameControl" required>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Valor</mat-label>
-            <input matInput type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
-                formControlName="valueControl" required>
-        </mat-form-field>
-    </div>
+    <form [formGroup]="pagamentoForm" (ngSubmit)="onSubmit()">
+        <div class="row space-rows">
+            <mat-form-field>
+                <mat-label>Usuário</mat-label>
+                <input matInput type="text" formControlName="name" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Valor</mat-label>
+                <input matInput type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+                    formControlName="value" required>
+            </mat-form-field>
+        </div>
 
-    <div class="row">
-        <mat-form-field>
-            <mat-label>Data</mat-label>
-            <input matInput [matDatepicker]="picker" [max]="maxDatepickerFilter" (click)="picker.open()"
-                (focus)="picker.open()" formControlName="dateControl" required>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Título</mat-label>
-            <input matInput type="text" formControlName="titleControl" required>
-        </mat-form-field>
-    </div>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Data</mat-label>
+                <input matInput [matDatepicker]="picker" [max]="maxDatepickerFilter" (click)="picker.open()"
+                    (focus)="picker.open()" formControlName="date" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Título</mat-label>
+                <input matInput type="text" formControlName="title" required>
+            </mat-form-field>
+        </div>
 
-    <div class="dialog-buttons">
+        <div class="dialog-buttons">
+            <button mat-raised-button color="accent" type="button" (click)="onNoClick()">Cancelar</button>
+            <button mat-raised-button color="primary" type="submit"
+                [disabled]="!pagamentoForm.valid">{{buttonText}}</button>
+        </div>
+    </form>
+</div>
+
+<ng-template #deleteDialog>
+    <h2>Excluir Pagamento</h2>
+    Usuário: {{data.task.name}} <br>
+    Data: {{data.task.date | date: 'dd/MM/YYYY'}}<br>
+    Valor: R${{data.task.value}}<br>
+    <div class="row dialog-buttons ">
         <button mat-raised-button color="accent" (click)="onNoClick()">Cancelar</button>
-        <button mat-raised-button color="primary" type="submit" [disabled]="!pagamentoForm.valid">Salvar</button>
+        <button mat-raised-button color="primary" (click)="deleteTask()">Deletar</button>
     </div>
-
-</form>
+</ng-template>
