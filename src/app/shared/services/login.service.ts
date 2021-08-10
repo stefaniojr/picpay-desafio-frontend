@@ -19,7 +19,7 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) {}
 
-  login(data: IAccount): Observable<IAccount[]> {
+  login(): Observable<IAccount[]> {
     return this.httpClient.get<IAccount[]>(this.baseUrl);
   }
 }

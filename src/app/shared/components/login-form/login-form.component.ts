@@ -33,14 +33,13 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(loginForm: IAccount) {
-    this.loginService.login(loginForm).subscribe((res) => {
+    this.loginService.login().subscribe((res) => {
       const user = res.find(
         (el) =>
           el.email === loginForm.email && el.password === loginForm.password
       );
 
       if (!user) {
-        console.log("Usuário Não Encontrado!");
         this.invalidUser = true;
       } else {
         localStorage.setItem("@user", JSON.stringify(user));
@@ -48,7 +47,5 @@ export class LoginFormComponent implements OnInit {
         this.router.navigate(["payments"]);
       }
     });
-    console.log(loginForm);
-    console.log(this.userData);
   }
 }
