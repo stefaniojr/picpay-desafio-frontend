@@ -1,0 +1,13 @@
+<mat-toolbar color="primary" class="toolbar">
+  <div class="logo"><span>Pay</span>Friends</div>
+  <span class="spacer"></span>
+
+  <div class="buttons">
+    <button class="profile">
+      <img [src]="userData?.img" />
+    </button>
+    <button class="logout" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

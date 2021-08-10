@@ -17,8 +17,10 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 
 // Components
 import { LoginComponent } from "./views/login/login.component";
+import { MatToolbarModule } from "@angular/material/toolbar";
 import { PaymentsComponent } from "./views/payments/payments.component";
 import { LoginFormComponent } from "./shared/components/login-form/login-form.component";
+import { ToolbarComponent } from "./shared/components/toolbar/toolbar.component";
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { LoginFormComponent } from "./shared/components/login-form/login-form.co
     LoginComponent,
     PaymentsComponent,
     LoginFormComponent,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { LoginFormComponent } from "./shared/components/login-form/login-form.co
     MatIconModule,
     MatButtonModule,
     MatInputModule,
+    MatToolbarModule,
     MatTableModule,
     MatPaginatorModule,
   ],

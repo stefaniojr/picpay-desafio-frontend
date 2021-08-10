@@ -1,0 +1,44 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.logo {
+  flex: 90%;
+  color: #f8f8f8;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+
+  span {
+    font-weight: 800;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 5%;
+}
+
+.profile {
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  border: none;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
+
+.logout {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #f8f8f8;
+}
