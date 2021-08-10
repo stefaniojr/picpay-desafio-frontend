@@ -40,13 +40,15 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
     this.taskService.find(this.paginator.pageIndex).subscribe(({ headers, body }) => {
       this.totalItems = headers.get('X-Total-Count')
       this.tasks = body
-    })
+    },
+      error => { this.toastr.error('Falha ao carregar dados', 'Erro') })
   }
 
   pageChanged = () => {
     this.pageSize = this.paginator.pageSize
-    this.taskService.find(this.paginator.pageIndex, this.pageSize).subscribe(response =>
-      this.tasks = response.body
+    this.taskService.find(this.paginator.pageIndex, this.pageSize).subscribe(
+      response => { this.tasks = response.body },
+      error => { this.toastr.error('Falha ao carregar página', 'Erro') }
     )
   }
 
@@ -58,7 +60,9 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
 
   updatePaidValue = (task: Task) => {
     const taskWithPayedChanged = { ...task, isPayed: !task.isPayed }
-    this.taskService.update(taskWithPayedChanged).subscribe(response => this.toastr.success('Atualizado'))
+    this.taskService.update(taskWithPayedChanged).subscribe(
+      response => { this.toastr.success('Atualizado') },
+      error => { this.toastr.error('Falha ao atualizar', 'Erro') })
   }
 
 }
