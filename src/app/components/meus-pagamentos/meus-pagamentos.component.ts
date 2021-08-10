@@ -18,6 +18,7 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Task>
   totalItems: number = 0
   pageSize: number = 0
+  loading = true
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator
   @ViewChild(MatSort, { static: true }) sort: MatSort
@@ -37,7 +38,9 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   }
 
   getTasks = () => {
+    this.loading = true
     this.taskService.find(this.paginator.pageIndex).subscribe(({ headers, body }) => {
+      this.loading = false
       this.totalItems = headers.get('X-Total-Count')
       this.tasks = body
     },
@@ -45,9 +48,13 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   }
 
   pageChanged = () => {
+    this.loading = true
     this.pageSize = this.paginator.pageSize
     this.taskService.find(this.paginator.pageIndex, this.pageSize).subscribe(
-      response => { this.tasks = response.body },
+      response => {
+        this.loading = false
+        this.tasks = response.body
+      },
       error => { this.toastr.error('Falha ao carregar página', 'Erro') }
     )
   }
