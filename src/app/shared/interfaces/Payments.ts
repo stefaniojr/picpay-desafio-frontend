@@ -1,6 +1,6 @@
 import { SafeResourceUrl } from "@angular/platform-browser";
 
-export interface Tasks {
+export interface IPayments {
   id: number;
   name: string;
   username: string;
