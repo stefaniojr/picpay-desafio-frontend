@@ -3,6 +3,8 @@ import { OnInit, AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { Task } from 'src/app/models/task.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-meus-pagamentos',
@@ -20,7 +22,7 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator
   @ViewChild(MatSort, { static: true }) sort: MatSort
 
-  constructor(private taskService: TaskService) {
+  constructor(private taskService: TaskService, private toastr: ToastrService) {
     this.dataSource = new MatTableDataSource()
   }
 
@@ -52,6 +54,11 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
     this.taskService.find(this.paginator.pageIndex, this.pageSize, event.active, event.direction).subscribe(response =>
       this.tasks = response.body
     )
+  }
+
+  updatePaidValue = (task: Task) => {
+    const taskWithPayedChanged = { ...task, isPayed: !task.isPayed }
+    this.taskService.update(taskWithPayedChanged).subscribe(response => this.toastr.success('Atualizado'))
   }
 
 }
