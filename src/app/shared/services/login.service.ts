@@ -17,9 +17,14 @@ export class LoginService {
     }),
   };
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
   login(): Observable<IAccount[]> {
     return this.httpClient.get<IAccount[]>(this.baseUrl);
+  }
+
+  logout(): void {
+    localStorage.clear();
+    this.router.navigate(["/"]);
   }
 }
