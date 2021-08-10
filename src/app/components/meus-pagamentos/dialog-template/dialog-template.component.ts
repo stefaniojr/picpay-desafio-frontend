@@ -21,7 +21,7 @@ export class DialogTemplateComponent implements OnInit {
     name: ['', [Validators.required, Validators.minLength(3)]],
     value: ['', Validators.required],
     date: ['', Validators.required],
-    title: ['', [Validators.required, Validators.minLength(6)]],
+    title: [''],
   })
 
   constructor(
