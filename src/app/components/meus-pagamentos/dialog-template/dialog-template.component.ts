@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Task } from 'src/app/models/task.model';
 import { ToastrService } from 'ngx-toastr';
 import { TaskService } from 'src/app/services/task.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { NotificationService } from './../../../services/notification.service';
 
 @Component({
   selector: 'dialog-template',
@@ -27,7 +27,7 @@ export class DialogTemplateComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogTemplateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder, private taskService: TaskService,
-    private tostr: ToastrService) {
+    private tostr: ToastrService, private notificationService: NotificationService) {
 
     this.maxDatepickerFilter = new Date()
 
@@ -57,6 +57,7 @@ export class DialogTemplateComponent implements OnInit {
       response => {
         this.dialogRef.close()
         this.tostr.success('Salvo com sucesso', 'Sucesso')
+        this.notificationService.loadData(true)
       },
       error => { this.tostr.error('Falha ao salvar', 'Erro') }
     )
@@ -67,6 +68,7 @@ export class DialogTemplateComponent implements OnInit {
       response => {
         this.dialogRef.close()
         this.tostr.success('Editado com sucesso', 'Sucesso')
+        this.notificationService.loadData(true)
       },
       error => { this.tostr.error('Falha ao editar', 'Erro') }
     )
@@ -77,6 +79,7 @@ export class DialogTemplateComponent implements OnInit {
       response => {
         this.dialogRef.close()
         this.tostr.success('Deletado com sucesso', 'Sucesso')
+        this.notificationService.loadData(true)
       },
       error => { this.tostr.error('Falha ao deletar', 'Erro') }
     )

@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { Task } from 'src/app/models/task.model';
 import { ToastrService } from 'ngx-toastr';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-meus-pagamentos',
@@ -23,13 +24,16 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator
   @ViewChild(MatSort, { static: true }) sort: MatSort
 
-  constructor(private taskService: TaskService, private toastr: ToastrService) {
+  constructor(private taskService: TaskService, private toastr: ToastrService, private notificationService: NotificationService) {
     this.dataSource = new MatTableDataSource()
   }
 
   ngOnInit(): void {
     this.getTasks()
     this.dataSource.sort = this.sort
+    this.notificationService.dialogNotification$.subscribe(
+      loadData => this.getTasks()
+    )
   }
 
   ngAfterViewInit(): void {
