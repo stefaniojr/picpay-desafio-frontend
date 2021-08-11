@@ -30,4 +30,23 @@ export class PaymentsService {
       catchError((error) => throwError(error))
     );
   }
+
+  public getAllPayments(): Observable<IPayments[]> {
+    return this.httpClient.get<IPayments[]>(this.baseUrl).pipe(
+      map((payments: IPayments[]) => payments),
+      catchError((error) => throwError(error))
+    );
+  }
+
+  public postPayment(payment: any): Observable<IPayments> {
+    return this.httpClient.post<IPayments>(
+      this.baseUrl,
+      payment,
+      this.httpOptions
+    );
+  }
+
+  public deletePayment(id: number): Observable<IPayments> {
+    return this.httpClient.delete<IPayments>(`${this.baseUrl}/${id}`);
+  }
 }
