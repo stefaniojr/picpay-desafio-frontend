@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Excluir Pagamento</h1>
+<div mat-dialog-content>
+  <div class="info">
+    <p>Usuário: {{ data.name }}</p>
+    <p>Data: {{ data.date | localDateTime }}</p>
+    <p>Valor: {{ data.value | currency: "BRL":"symbol":"1.1-2":"pt" }}</p>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="primary" (click)="cancel()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <button mat-button color="primary" (click)="deletePayment()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
