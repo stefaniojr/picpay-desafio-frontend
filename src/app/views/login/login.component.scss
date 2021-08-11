@@ -1,0 +1,46 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "form background background"
+    "form background background"
+    "form background background";
+}
+
+.form {
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .logo {
+    width: 150px;
+    height: 30px;
+    background-image: url("../../../assets/logo.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  h1 {
+    font-size: 1.875rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    margin: 1rem 0;
+  }
+}
+
+.background-svg {
+  grid-area: background;
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../assets/background-login.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
