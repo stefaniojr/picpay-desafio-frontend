@@ -25,3 +25,23 @@ h1 {
     overflow: hidden;
   }
 }
+
+.settings {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  margin: auto 1rem;
+  button {
+    margin: 0 0.4rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 20px;
+    height: 20px;
+  }
+
+  .mat-icon {
+    width: 100%;
+  }
+}
