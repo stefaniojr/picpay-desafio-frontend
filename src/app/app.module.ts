@@ -35,7 +35,7 @@ import { DialogTemplateComponent } from './components/meus-pagamentos/dialog-tem
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/template/header/header.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatPaginatorIntlPt } from './share/mat-paginator-int-pt';
+import { MatPaginatorIntlPt } from './share/mat-paginator-intl-pt';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
