@@ -8,7 +8,7 @@
 
         <div class="row">
             <mat-form-field class="mat-form-field-no-padding">
-                <input type="tel" matInput placeholder="Pesquisar" (keyup)="searchSource.next($event)">
+                <input type="tel" matInput placeholder="Pesquisar usuário" (keyup)="searchSource.next($event)">
                 <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
             <mat-paginator [pageSizeOptions]="[5, 10, 20]" [length]="totalItems" [pageSize]="5" (page)="pageChanged()"
@@ -20,7 +20,8 @@
             <table *ngIf="loading===false" mat-table [dataSource]="tasks" matSort (matSortChange)="sortData($event)">
                 <ng-container matColumnDef="name">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Usuário</th>
-                    <td mat-cell *matCellDef="let task"> {{task.name}} <br> <span class="username">@{{task.username}}</span>
+                    <td mat-cell *matCellDef="let task"> {{task.name}} <br> <span
+                            class="username">@{{task.username}}</span>
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="title">
