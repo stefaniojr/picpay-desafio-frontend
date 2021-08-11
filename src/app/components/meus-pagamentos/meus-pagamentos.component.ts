@@ -94,8 +94,8 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   updatePaidValue = (task: Task) => {
     const taskWithPayedChanged = { ...task, isPayed: !task.isPayed }
     this.taskService.update(taskWithPayedChanged).subscribe(
-      response => { this.toastr.success('Atualizado') },
-      error => { this.toastr.error('Falha ao atualizar', 'Erro') })
+      response => { this.toastr.success('Status do pagamento atualizado') },
+      error => { this.toastr.error('Falha ao atualizar') })
   }
 
 }

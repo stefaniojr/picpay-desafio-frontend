@@ -27,7 +27,7 @@ export class DialogTemplateComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogTemplateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder, private taskService: TaskService,
-    private tostr: ToastrService, private notificationService: NotificationService) {
+    private toastr: ToastrService, private notificationService: NotificationService) {
 
     this.maxDatepickerFilter = new Date()
 
@@ -56,10 +56,10 @@ export class DialogTemplateComponent implements OnInit {
     this.taskService.add(task).subscribe(
       response => {
         this.dialogRef.close()
-        this.tostr.success('Salvo com sucesso', 'Sucesso')
+        this.toastr.success('Salvo com sucesso')
         this.notificationService.loadData(true)
       },
-      error => { this.tostr.error('Falha ao salvar', 'Erro') }
+      error => { this.toastr.error('Falha ao salvar') }
     )
   }
 
@@ -67,10 +67,10 @@ export class DialogTemplateComponent implements OnInit {
     this.taskService.update(task).subscribe(
       response => {
         this.dialogRef.close()
-        this.tostr.success('Editado com sucesso', 'Sucesso')
+        this.toastr.success('Editado com sucesso')
         this.notificationService.loadData(true)
       },
-      error => { this.tostr.error('Falha ao editar', 'Erro') }
+      error => { this.toastr.error('Falha ao editar') }
     )
   }
 
@@ -78,10 +78,10 @@ export class DialogTemplateComponent implements OnInit {
     this.taskService.delete(this.data.task).subscribe(
       response => {
         this.dialogRef.close()
-        this.tostr.success('Deletado com sucesso', 'Sucesso')
+        this.toastr.success('Deletado com sucesso')
         this.notificationService.loadData(true)
       },
-      error => { this.tostr.error('Falha ao deletar', 'Erro') }
+      error => { this.toastr.error('Falha ao deletar') }
     )
   }
 
