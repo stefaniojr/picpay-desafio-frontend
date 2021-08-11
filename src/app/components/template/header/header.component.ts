@@ -1,6 +1,6 @@
 import { AuthService } from './../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn = false
 
-  constructor(private authService: AuthService, private route: ActivatedRoute) { }
+  constructor(private authService: AuthService, public router: Router) { }
 
   ngOnInit(): void {
 
@@ -23,6 +23,10 @@ export class HeaderComponent implements OnInit {
 
   logout = () => {
     this.authService.logout()
+  }
+
+  showNavBar = () => {
+    return this.router.url !== '/login'
   }
 
 }
