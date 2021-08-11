@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module'
 import ptBr from '@angular/common/locales/pt';
 
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,6 +35,7 @@ import { DialogTemplateComponent } from './components/meus-pagamentos/dialog-tem
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/template/header/header.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorIntlPt } from './share/mat-paginator-int-pt';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { MatMenuModule } from '@angular/material/menu';
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlPt }
   ],
   bootstrap: [AppComponent]
 })
