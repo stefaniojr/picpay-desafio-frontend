@@ -20,7 +20,7 @@
             <table *ngIf="loading===false" mat-table [dataSource]="tasks" matSort (matSortChange)="sortData($event)">
                 <ng-container matColumnDef="name">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Usuário</th>
-                    <td mat-cell *matCellDef="let task"> {{task.name}} <br> <span
+                    <td mat-cell *matCellDef="let task"> {{task.name}} <br> <span *ngIf="task.username"
                             class="username">@{{task.username}}</span>
                     </td>
                 </ng-container>
