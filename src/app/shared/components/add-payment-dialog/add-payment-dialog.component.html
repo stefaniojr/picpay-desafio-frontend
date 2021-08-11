@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Adicionar Pagamento</h1>
+<div mat-dialog-content>
+  <form [formGroup]="addPaymentForm">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="user" placeholder="Usuário*" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input
+          type="number"
+          matInput
+          formControlName="value"
+          placeholder="Valor*"
+        />
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <input matInput readonly formControlName="date" placeholder="Data*" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="title" placeholder="Título" />
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="primary" (click)="cancel()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <button mat-button color="primary" (click)="createPayment()">
+    <mat-icon>check</mat-icon>
+  </button>
+</div>
