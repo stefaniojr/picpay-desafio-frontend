@@ -6,8 +6,8 @@ import { MatSort } from '@angular/material/sort';
 import { Task } from 'src/app/models/task.model';
 import { ToastrService } from 'ngx-toastr';
 import { NotificationService } from 'src/app/services/notification.service';
-import { fromEvent, Subject } from 'rxjs';
-import { debounceTime, map, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-meus-pagamentos',
@@ -30,8 +30,7 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator
   @ViewChild(MatSort, { static: true }) sort: MatSort
 
-  constructor(private taskService: TaskService, private toastr: ToastrService, private notificationService: NotificationService,
-    private elementRef: ElementRef) {
+  constructor(private taskService: TaskService, private toastr: ToastrService, private notificationService: NotificationService) {
     this.dataSource = new MatTableDataSource()
   }
 
