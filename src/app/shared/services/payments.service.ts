@@ -18,9 +18,9 @@ export class PaymentsService {
     }),
   };
 
-  constructor(public httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
-  getPayments(page: number, limit: number): Observable<IPayments[]> {
+  public getPayments(page: number, limit: number): Observable<IPayments[]> {
     let params = new HttpParams();
     params = params.append("_page", String(page));
     params = params.append("_limit", String(limit));
