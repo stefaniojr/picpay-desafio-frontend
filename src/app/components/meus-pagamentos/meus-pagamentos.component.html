@@ -6,9 +6,15 @@
             <app-dialog-manager operation="create"></app-dialog-manager>
         </div>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" [length]="totalItems" [pageSize]="5" (page)="pageChanged()"
-            showFirstLastButtons firstPageLabel="Próxima página">
-        </mat-paginator>
+        <div class="row">
+            <mat-form-field class="mat-form-field-no-padding">
+                <input type="tel" matInput placeholder="Pesquisar" (keyup)="searchSource.next($event)">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" [length]="totalItems" [pageSize]="5" (page)="pageChanged()"
+                showFirstLastButtons firstPageLabel="Próxima página">
+            </mat-paginator>
+        </div>
 
         <div class="table-container">
             <table *ngIf="loading===false" mat-table [dataSource]="tasks" matSort (matSortChange)="sortData($event)">
@@ -57,7 +63,9 @@
                     <div></div>
                 </div>
             </div>
+            <div *ngIf="this.tasks?.length==0 && loading===false">
+                <p class="text-center mt-20">Sem resultados de busca</p>
+            </div>
         </div>
-
     </div>
 </section>

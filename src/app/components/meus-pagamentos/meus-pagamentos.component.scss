@@ -17,10 +17,7 @@
   }
 
   .table-container {
-    display        : flex;
-    min-height     : 456px;
-    align-items    : center;
-    justify-content: center;
+    padding-bottom: 100px;
   }
 
   tbody>tr:hover {
@@ -62,17 +59,14 @@ td.mat-footer-cell {
 }
 
 
-
-
-
-
-
+// loaging spinner ---
 
 .lds-facebook {
-  display : inline-block;
-  position: relative;
-  width   : 80px;
-  height  : 80px;
+  display   : inline-block;
+  position  : relative;
+  width     : 80px;
+  height    : 80px;
+  margin-top: 200px;
 }
 
 .lds-facebook div {

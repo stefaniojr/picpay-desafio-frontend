@@ -19,9 +19,11 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
-  find = (page: number, limit: number = 5, sort: string = '', order: string = ''): Observable<any> => {
+  search = (name: string, page: number = 0, limit: number = 5, sort: string = '', order: string = '') => {
     return this.http.get<any>(this.endpoint, {
-      observe: 'response', params: new HttpParams()
+      observe: 'response',
+      params: new HttpParams()
+        .set('name_like', name)
         .set('_page', page + 1)
         .set('_limit', limit)
         .set('_sort', sort)

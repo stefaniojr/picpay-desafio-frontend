@@ -1,11 +1,13 @@
 import { TaskService } from './../../services/task.service';
-import { OnInit, AfterViewInit, Component, ViewChild } from '@angular/core';
+import { OnInit, AfterViewInit, Component, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { Task } from 'src/app/models/task.model';
 import { ToastrService } from 'ngx-toastr';
 import { NotificationService } from 'src/app/services/notification.service';
+import { fromEvent, Subject } from 'rxjs';
+import { debounceTime, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-meus-pagamentos',
@@ -17,14 +19,19 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   tasks: Task[] = []
   displayedColumns: string[] = ['name', 'title', 'date', 'value', 'isPayed', 'edit-delete']
   dataSource: MatTableDataSource<Task>
-  totalItems: number = 0
+  totalItems
   pageSize: number = 0
   loading = true
+  searchName = ''
+
+  @Output() emitValueSearch = new EventEmitter();
+  searchSource: Subject<string> = new Subject<string>();
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator
   @ViewChild(MatSort, { static: true }) sort: MatSort
 
-  constructor(private taskService: TaskService, private toastr: ToastrService, private notificationService: NotificationService) {
+  constructor(private taskService: TaskService, private toastr: ToastrService, private notificationService: NotificationService,
+    private elementRef: ElementRef) {
     this.dataSource = new MatTableDataSource()
   }
 
@@ -39,11 +46,26 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator
     this.pageSize = this.paginator.pageSize
+
+    this.searchSource.pipe(
+      debounceTime(1000),
+      map((value: any) => value.target.value)
+    ).subscribe(this.searchTasks)
+  }
+
+  searchTasks = (name: string) => {
+    this.searchName = name
+    this.loading = true
+    this.taskService.search(name).subscribe(({ headers, body }) => {
+      this.loading = false
+      this.totalItems = headers.get('X-Total-Count')
+      this.tasks = body
+    })
   }
 
   getTasks = () => {
     this.loading = true
-    this.taskService.find(this.paginator.pageIndex).subscribe(({ headers, body }) => {
+    this.taskService.search(this.searchName, this.paginator.pageIndex).subscribe(({ headers, body }) => {
       this.loading = false
       this.totalItems = headers.get('X-Total-Count')
       this.tasks = body
@@ -54,7 +76,7 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   pageChanged = () => {
     this.loading = true
     this.pageSize = this.paginator.pageSize
-    this.taskService.find(this.paginator.pageIndex, this.pageSize).subscribe(
+    this.taskService.search(this.searchName, this.paginator.pageIndex, this.pageSize).subscribe(
       response => {
         this.loading = false
         this.tasks = response.body
@@ -64,7 +86,7 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   }
 
   sortData = (event) => {
-    this.taskService.find(this.paginator.pageIndex, this.pageSize, event.active, event.direction).subscribe(response =>
+    this.taskService.search(this.searchName, this.paginator.pageIndex, this.pageSize, event.active, event.direction).subscribe(response =>
       this.tasks = response.body
     )
   }
@@ -77,3 +99,5 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   }
 
 }
+
+
