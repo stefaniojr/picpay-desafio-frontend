@@ -14,7 +14,7 @@ import { NotificationService } from './../../../services/notification.service';
 export class DialogTemplateComponent implements OnInit {
 
   maxDatepickerFilter: Date
-  dialogTitle: string = ''
+  dialogTitle: string = 'Adicionar'
   buttonText: string = 'Salvar'
 
   pagamentoForm: FormGroup = this.formBuilder.group({

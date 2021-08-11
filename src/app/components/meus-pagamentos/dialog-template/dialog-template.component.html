@@ -3,27 +3,28 @@
     <h2>{{ dialogTitle }} pagamento</h2>
 
     <form [formGroup]="pagamentoForm" (ngSubmit)="onSubmit()">
-        <div class="row space-rows">
-            <mat-form-field>
+        <div class="flexbox-container">
+
+            <mat-form-field class="flexbox-item">
                 <mat-label>Usuário</mat-label>
                 <input matInput type="text" formControlName="name" required>
             </mat-form-field>
-            <mat-form-field>
+
+            <mat-form-field class="flexbox-item">
                 <mat-label>Valor</mat-label>
                 <input matInput type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
                     formControlName="value" required>
             </mat-form-field>
-        </div>
 
-        <div class="row">
-            <mat-form-field>
+            <mat-form-field class="flexbox-item">
                 <mat-label>Data</mat-label>
                 <input matInput [matDatepicker]="picker" [max]="maxDatepickerFilter" (click)="picker.open()"
                     (focus)="picker.open()" formControlName="date" required>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-            <mat-form-field>
+
+            <mat-form-field class="flexbox-item">
                 <mat-label>Título</mat-label>
                 <input matInput type="text" formControlName="title">
             </mat-form-field>
@@ -34,7 +35,9 @@
             <button mat-raised-button color="primary" type="submit"
                 [disabled]="!pagamentoForm.valid">{{buttonText}}</button>
         </div>
+        
     </form>
+
 </div>
 
 <ng-template #deleteDialog>
