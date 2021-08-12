@@ -108,6 +108,7 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
       response => { this.toastr.success('Status do pagamento atualizado') },
       error => {
         this.showMessageError('Falha ao atualizar status de pagamento', false)
+        task.isPayed = !task.isPayed
       })
   }
 
