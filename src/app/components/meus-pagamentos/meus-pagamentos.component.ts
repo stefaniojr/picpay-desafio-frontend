@@ -7,7 +7,7 @@ import { Task } from 'src/app/models/task.model';
 import { ToastrService } from 'ngx-toastr';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Subject } from 'rxjs';
-import { debounceTime, map } from 'rxjs/operators';
+import { debounceTime, map, timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-meus-pagamentos',
@@ -19,7 +19,7 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   tasks: Task[] = []
   displayedColumns: string[] = ['name', 'title', 'date', 'value', 'isPayed', 'edit-delete']
   dataSource: MatTableDataSource<Task>
-  totalItems
+  totalItems: any
   pageSize: number = 0
   loading = true
   searchName = ''
@@ -69,7 +69,10 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
       this.totalItems = headers.get('X-Total-Count')
       this.tasks = body
     },
-      error => { this.toastr.error('Falha ao carregar dados', 'Erro') })
+      error => {
+        this.loading = false
+        this.showMessageError('Falha ao carregar dados', true)
+      })
   }
 
   pageChanged = () => {
@@ -80,8 +83,17 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
         this.loading = false
         this.tasks = response.body
       },
-      error => { this.toastr.error('Falha ao carregar página', 'Erro') }
+      error => {
+        this.loading = false
+        this.showMessageError('Falha ao carregar dados', true)
+      }
     )
+  }
+
+  showMessageError = (message: string, disableTimeOut: boolean) => {
+    this.toastr.error(message, 'Erro', {
+      disableTimeOut: disableTimeOut
+    })
   }
 
   sortData = (event) => {
@@ -92,9 +104,11 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
 
   updatePaidValue = (task: Task) => {
     const taskWithPayedChanged = { ...task, isPayed: !task.isPayed }
-    this.taskService.update(taskWithPayedChanged).subscribe(
+    this.taskService.update(taskWithPayedChanged).pipe(timeout(1000)).subscribe(
       response => { this.toastr.success('Status do pagamento atualizado') },
-      error => { this.toastr.error('Falha ao atualizar') })
+      error => {
+        this.showMessageError('Falha ao atualizar status de pagamento', false)
+      })
   }
 
 }
