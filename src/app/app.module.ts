@@ -3,7 +3,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HeaderModule } from './components/template/header/header.module'
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
@@ -11,7 +10,6 @@ import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,9 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     ToastrModule.forRoot({ positionClass: 'toast-top-center' }),
   ],
-  providers: [
-
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
