@@ -31,7 +31,6 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
 import { HeaderComponent } from './components/template/header/header.component';
 import { DialogManagerComponent } from './components/meus-pagamentos/dialog-manager/dialog-manager.component';
 import { DialogTemplateComponent } from './components/meus-pagamentos/dialog-template/dialog-template.component';
-import { LoginComponent } from './components/login/login.component';
 import { MeusPagamentosComponent } from './components/meus-pagamentos/meus-pagamentos.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { VisibleOnHoverDirective } from './directives/visible-on-hover.directive';
@@ -46,7 +45,6 @@ registerLocaleData(ptBr);
     VisibleOnHoverDirective,
     DialogManagerComponent,
     DialogTemplateComponent,
-    LoginComponent,
     HeaderComponent,
     PageNotFoundComponent,
   ],
@@ -71,7 +69,7 @@ registerLocaleData(ptBr);
     ReactiveFormsModule,
     ToastrModule.forRoot({ positionClass: 'toast-top-center' }),
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },

@@ -1,4 +1,3 @@
-import { LoginComponent } from './components/login/login.component';
 import { MeusPagamentosComponent } from './components/meus-pagamentos/meus-pagamentos.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,7 +6,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 
 const routes: Routes = [
   { path: '', component: MeusPagamentosComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule) },
   { path: '**', component: PageNotFoundComponent }
 ];
 
