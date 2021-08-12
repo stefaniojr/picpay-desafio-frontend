@@ -1,9 +1,12 @@
-import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appVisibleOnHover]'
 })
 export class VisibleOnHoverDirective {
+
+
+  @Input('appVisibleOnHover') isMobileDevice: boolean
 
   constructor(private element: ElementRef, private renderer: Renderer2) { }
 
@@ -14,10 +17,11 @@ export class VisibleOnHoverDirective {
 
   @HostListener('mouseleave')
   hide() {
-    this.setElementDisplayStyleProperty('none')
+    if (!this.isMobileDevice)
+      this.setElementDisplayStyleProperty('none')
   }
 
-  setElementDisplayStyleProperty = (display: string) => {    
+  setElementDisplayStyleProperty = (display: string) => {
     const lastIndex = this.element.nativeElement.children.length - 1
     this.renderer.setStyle(this.element.nativeElement.children[lastIndex].children[0], 'display', display)
   }

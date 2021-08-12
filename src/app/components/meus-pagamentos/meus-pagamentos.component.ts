@@ -35,11 +35,16 @@ export class MeusPagamentosComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+
     this.getTasks()
     this.dataSource.sort = this.sort
     this.notificationService.dialogNotification$.subscribe(
       loadData => this.getTasks()
     )
+  }
+
+  get isMobileDevice() {
+    return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
   }
 
   ngAfterViewInit(): void {

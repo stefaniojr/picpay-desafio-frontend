@@ -1,19 +1,32 @@
+@media only screen and (max-width: 600px) {
+
+  .icons-column {
+    min-width: 100px
+  }
+
+}
+
 .meuspagamentos {
 
   .action-icons-cell {
     display: none;
   }
 
-  .icon {
-    margin: 0 10px;
+  .is-mobile {
+    display: block;
+  }
+
+  .addButton {
+    margin-top: 15px;
   }
 
   .icons-column {
-    width: 135px;
+    width: 150px
   }
 
   table {
-    width: 100%;
+    width   : 100%;
+    overflow: auto
   }
 
   .table-container {
@@ -38,11 +51,24 @@
     border-bottom: 2px solid #CFDCE5;
   }
 
+  .title {
+    padding-right: 15px;
+  }
+
   tr:nth-child(even) {
     background-color: #F5F8FA;
   }
 
 }
+
+
+.row {
+  display        : flex;
+  justify-content: space-between;
+  flex-wrap      : wrap;
+}
+
+
 
 th.mat-header-cell,
 td.mat-cell,
