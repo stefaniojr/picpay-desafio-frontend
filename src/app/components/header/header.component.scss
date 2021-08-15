@@ -1,0 +1,12 @@
+@import "../../../config-scss/remCalc.scss";
+
+.header {
+  background-color: var(--primary-color);
+  height: 4.34rem;
+  color: var(--white);
+  font-family: Montserrat, Roboto, Lato;
+  font-size: 1.5rem;
+  span {
+    font-weight: 800;
+  }
+}
