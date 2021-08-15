@@ -1,0 +1,16 @@
+.table-action-buttons {
+  button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: 0.62rem;
+  }
+}
+
+.avatar {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 100%;
+  border: 2px solid var(--secondary-color);
+}

@@ -1,0 +1,39 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Avatar</th>
+        <th scope="col">Usuário</th>
+        <th scope="col">Título</th>
+        <th scope="col">Data</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Pago</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of dataSource">
+        <td>
+          <img src="{{ task.image }}" alt="Profile Avatar" class="avatar" />
+        </td>
+        <td>{{ task.name }}</td>
+        <td>{{ task.title }}</td>
+        <td>{{ task.date }}</td>
+        <td>{{ task.value }}</td>
+        <td>
+          <input type="checkbox" name="isPayed" [checked]="task.isPayed" />
+        </td>
+        <td>
+          <div class="table-action-buttons">
+            <button (click)="editTask(task)">
+              <img src="../assets/editIcon.svg" />
+            </button>
+            <button (click)="deleteTask(task.id)">
+              <img src="../assets/deleteIcon.svg" />
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
