@@ -1,0 +1,12 @@
+.input-login,
+form {
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  background-color: var(--secondary-color);
+  height: remCalc(36);
+  font-weight: 500;
+  letter-spacing: 2px;
+}
