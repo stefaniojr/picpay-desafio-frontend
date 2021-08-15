@@ -1,6 +1,5 @@
-@use "./config-scss/reset.scss";
-@use "./config-scss/variables.scss";
-@use "./config-scss/remCalc.scss";
+@use "./styles/reset.scss";
+@use "./styles/variables.scss";
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '~@angular/material' as mat;
@@ -64,4 +63,4 @@ body {
 }
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';

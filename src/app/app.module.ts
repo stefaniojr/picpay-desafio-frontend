@@ -30,15 +30,13 @@ import { TasksTableComponent } from "./components/tasks-table/tasks-table.compon
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-
+    //Bootstrap
+    NgbModule,
     //Material
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatToolbarModule,
-
-    //Bootstrap
-    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

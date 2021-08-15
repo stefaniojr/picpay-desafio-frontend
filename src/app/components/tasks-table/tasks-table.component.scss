@@ -1,3 +1,14 @@
+@import "~bootstrap/scss/bootstrap";
+
+.table-container {
+  background-color: var(--white);
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: var(--secondary-background-color);
+}
+
 .table-action-buttons {
   button {
     border: none;
@@ -13,4 +24,36 @@
   height: 3.75rem;
   border-radius: 100%;
   border: 2px solid var(--secondary-color);
+}
+
+.add-task-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+
+  button {
+    letter-spacing: 2px;
+    background-color: var(--secondary-color);
+  }
+}
+
+h2 {
+  font-family: Montserrat;
+  font-weight: 600;
+  color: var(--title-color);
+  font-size: 30px;
+  width: 100%;
+}
+
+tr,
+td {
+  border: none !important;
+  height: 100%;
+}
+
+p {
+  display: flex;
+  align-items: center;
+  transform: translatey(100%);
 }
