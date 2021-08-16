@@ -22,6 +22,7 @@ import { HeaderComponent } from "./components/header/header.component";
 import { TasksTableComponent } from "./components/tasks-table/tasks-table.component";
 import { ModalCreateComponent } from "./components/modal-create/modal-create.component";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     HeaderComponent,
     TasksTableComponent,
     ModalCreateComponent,
+    DeleteConfirmComponent,
   ],
   imports: [
     BrowserModule,

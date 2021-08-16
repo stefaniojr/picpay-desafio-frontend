@@ -1,38 +1,49 @@
-<h1 *ngIf="isCreate" mat-dialog-title>Adicionar pagamento</h1>
-<h1 *ngIf="!isCreate" mat-dialog-title>Editar pagamento</h1>
+<h2 *ngIf="isCreate" mat-dialog-title>Adicionar pagamento</h2>
+<h2 *ngIf="!isCreate" mat-dialog-title>Editar pagamento</h2>
 
-<div mat-dialog-content>
-  <mat-form-field appearance="outline">
-    <mat-label>Usuário*</mat-label>
-    <input type="text" matInput [(ngModel)]="data.username" />
-  </mat-form-field>
+<div mat-dialog-container>
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Usuário*</mat-label>
+      <input type="text" matInput [(ngModel)]="data.username" />
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Valor*</mat-label>
-    <input type="number" matInput [(ngModel)]="data.value" />
-  </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Valor*</mat-label>
+      <input type="number" matInput [(ngModel)]="data.value" />
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Data*</mat-label>
-    <input type="datetime-local" matInput [(ngModel)]="data.date" />
-  </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Data*</mat-label>
+      <input type="datetime-local" matInput [(ngModel)]="data.date" />
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Título</mat-label>
-    <input type="text" matInput [(ngModel)]="data.title" />
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onCancel()">Cancelar</button>
-  <button *ngIf="isCreate" mat-button [mat-dialog-close]="data" cdkFocusInitial>
-    Salvar
-  </button>
-  <button
-    *ngIf="!isCreate"
-    mat-button
-    [mat-dialog-close]="data"
-    cdkFocusInitial
-  >
-    Editar
-  </button>
+    <mat-form-field appearance="outline">
+      <mat-label>Título</mat-label>
+      <input type="text" matInput [(ngModel)]="data.title" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()" color="primary" class="cancel">
+      CANCELAR
+    </button>
+    <button
+      *ngIf="isCreate"
+      mat-button
+      [mat-dialog-close]="data"
+      cdkFocusInitial
+      class="save"
+    >
+      SALVAR
+    </button>
+    <button
+      *ngIf="!isCreate"
+      mat-button
+      [mat-dialog-close]="data"
+      cdkFocusInitial
+      class="save"
+    >
+      EDITAR
+    </button>
+  </div>
 </div>

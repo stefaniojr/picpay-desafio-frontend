@@ -4,6 +4,7 @@ import { TasksService } from "src/app/services/tasks.service";
 import { MatDialog } from "@angular/material/dialog";
 import { ModalCreateComponent } from "../modal-create/modal-create.component";
 import { formatDate } from "@angular/common";
+import { DeleteConfirmComponent } from "../delete-confirm/delete-confirm.component";
 
 @Component({
   selector: "app-tasks-table",
@@ -34,7 +35,8 @@ export class TasksTableComponent implements OnInit {
   }
 
   editTask(task: TaskModel): void {
-    // this.openDialog(task);
+    task.date = formatDate(task.date, "yyyy-MM-ddTHH:mm", "en-US", "-0300");
+    this.openDialog(task);
   }
   openDialog(task: TaskModel | null): void {
     const dialogRef = this.dialog.open(ModalCreateComponent, {
@@ -45,7 +47,7 @@ export class TasksTableComponent implements OnInit {
               id: null,
               name: "",
               username: "",
-              title: "teste",
+              title: "",
               value: null,
               date: formatDate(
                 new Date(),
@@ -60,11 +62,46 @@ export class TasksTableComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((task) => {
-      if (task.id == null) {
+      if (task?.id == null) {
         this.tasksService.createTask(task).subscribe();
       } else {
         this.tasksService.editTask(task).subscribe();
       }
+      this.getTasks();
     });
+  }
+
+  openDeleteConfirm(task: TaskModel | null): void {
+    const dialogRef = this.dialog.open(DeleteConfirmComponent, {
+      width: "25rem",
+      data: task,
+    });
+
+    dialogRef.afterClosed().subscribe((task) => {
+      this.tasksService.deleteTask(task.id).subscribe();
+      this.getTasks();
+    });
+  }
+
+  formatTaskDate(date: Date) {
+    if (date) {
+      return formatDate(date, "dd MMM yyyy HH:mm", "en-US");
+    }
+  }
+
+  formatTaskValue(value: Number) {
+    if (value) {
+      return value.toLocaleString("pt-br", {
+        style: "currency",
+        currency: "BRL",
+      });
+    }
+  }
+
+  editStatus(task: TaskModel) {
+    task.isPayed = !task.isPayed;
+    console.log(task);
+    this.tasksService.editTask(task).subscribe();
+    this.getTasks;
   }
 }

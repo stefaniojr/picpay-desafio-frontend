@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Excluir pagamento</h2>
+
+<div mat-dialog-container>
+  <div mat-dialog-content>
+    <p>Usuário: {{ data.name }}</p>
+    <p>Data: {{ data.date }}</p>
+    <p>Valor: {{ data.value }}</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()" class="cancel">CANCELAR</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial class="save">
+      SALVAR
+    </button>
+  </div>
+</div>

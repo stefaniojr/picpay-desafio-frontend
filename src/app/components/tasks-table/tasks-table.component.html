@@ -7,7 +7,12 @@
 </div>
 
 <div class="table-container table-responsive">
-  <table class="table table-striped">
+  <div class="header-table-actions">
+    <mat-form-field appearance="outline" class="search">
+      <input matInput placeholder="Pesquisar por usuário" type="text" />
+    </mat-form-field>
+  </div>
+  <table class="table-striped">
     <thead>
       <tr>
         <th scope="col">Avatar</th>
@@ -26,17 +31,22 @@
         </td>
         <td>{{ task.name }}</td>
         <td>{{ task.title }}</td>
-        <td>{{ task.date }}</td>
-        <td>{{ task.value }}</td>
+        <td>{{ formatTaskDate(task.date) }}</td>
+        <td>{{ formatTaskValue(task.value) }}</td>
         <td>
-          <input type="checkbox" name="isPayed" [checked]="task.isPayed" />
+          <input
+            type="checkbox"
+            name="isPayed"
+            [checked]="task.isPayed"
+            (change)="editStatus(task)"
+          />
         </td>
         <td>
           <div class="table-action-buttons">
             <button (click)="editTask(task)">
               <img src="../assets/editIcon.svg" />
             </button>
-            <button (click)="deleteTask(task.id)">
+            <button (click)="openDeleteConfirm(task)">
               <img src="../assets/deleteIcon.svg" />
             </button>
           </div>

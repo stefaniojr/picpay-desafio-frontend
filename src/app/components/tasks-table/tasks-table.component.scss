@@ -2,6 +2,7 @@
 
 .table-container {
   background-color: var(--white);
+  border-radius: 8px;
 }
 
 .table-striped > tbody > tr:nth-child(odd) > td,
@@ -26,6 +27,19 @@
   border: 2px solid var(--secondary-color);
 }
 
+.header-table-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.2rem;
+  margin-bottom: 3rem;
+  .mat-form-field,
+  input {
+    height: 1rem;
+    width: 18rem;
+  }
+}
+
 .add-task-container {
   width: 100%;
   display: flex;
@@ -46,8 +60,22 @@ h2 {
   width: 100%;
 }
 
-tr,
+thead {
+  font-weight: 600;
+  font-family: Lato;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+th {
+  padding: 1rem;
+  border-bottom: 2px solid var(--grey);
+}
+
 td {
-  border: none !important;
-  height: 100%;
+  padding: 1rem;
+}
+
+table {
+  width: 100%;
 }
