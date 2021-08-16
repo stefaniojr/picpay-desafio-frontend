@@ -1,17 +1,30 @@
-<form>
+<form [formGroup]="loginFormGroup">
   <p>
     <mat-form-field appearance="outline" class="input-login">
       <mat-label>Email</mat-label>
-      <input matInput placeholder="example@mail.com" type="email" />
+      <input
+        formControlName="mail"
+        matInput
+        placeholder="example@mail.com"
+        type="email"
+      />
+      <mat-error *ngIf="loginFormGroup.get('mail').errors?.required"
+        >*Obrigatório</mat-error
+      >
     </mat-form-field>
   </p>
 
   <p>
     <mat-form-field appearance="outline" class="input-login">
       <mat-label>Senha</mat-label>
-      <input matInput type="password" />
+      <input formControlName="password" matInput type="password" />
+      <mat-error *ngIf="loginFormGroup.get('password').errors?.required"
+        >*Obrigatório</mat-error
+      >
     </mat-form-field>
   </p>
 
-  <button mat-flat-button color="primary">ENTRAR</button>
+  <button mat-flat-button color="primary" type="submit" (click)="verifyForm()">
+    ENTRAR
+  </button>
 </form>

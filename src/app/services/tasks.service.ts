@@ -7,8 +7,14 @@ import { TaskModel } from "../models/task-model";
 export class TasksService {
   tasksApiUrl = "http://localhost:3000/tasks";
   constructor(private http: HttpClient) {}
-  getTasks(): Observable<TaskModel[]> {
-    return this.http.get<TaskModel[]>(this.tasksApiUrl);
+  getTasks(active?, direction?): Observable<TaskModel[]> {
+    if (active && direction) {
+      return this.http.get<TaskModel[]>(
+        `${this.tasksApiUrl}?_sort=${active}&_order=${direction}`
+      );
+    } else {
+      return this.http.get<TaskModel[]>(this.tasksApiUrl);
+    }
   }
 
   createTask(task: TaskModel): Observable<TaskModel> {

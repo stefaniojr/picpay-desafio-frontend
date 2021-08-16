@@ -11,32 +11,51 @@
 }
 
 .table-action-buttons {
+  text-align: right;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.9s linear;
   button {
     border: none;
     outline: none;
     background-color: transparent;
     cursor: pointer;
-    margin-right: 0.62rem;
+    img {
+      width: 90%;
+    }
   }
 }
 
+table tr:hover .table-action-buttons {
+  visibility: visible;
+  opacity: 1;
+}
+
+.avatar-container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+}
+
 .avatar {
-  width: 3.75rem;
-  height: 3.75rem;
+  width: 2.8rem;
+  height: 2.8rem;
   border-radius: 100%;
-  border: 2px solid var(--secondary-color);
+  box-shadow: 0px 0px 6px 0px var(--secondary-color);
 }
 
 .header-table-actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 1.2rem;
-  margin-bottom: 3rem;
-  .mat-form-field,
+  .form-group {
+    margin: 0;
+  }
   input {
-    height: 1rem;
+    height: 2.5rem;
     width: 18rem;
+    margin: 0 1rem;
   }
 }
 
@@ -44,11 +63,12 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 20px;
+  margin-bottom: 0.5rem;
 
   button {
     letter-spacing: 2px;
     background-color: var(--secondary-color);
+    font-size: 0.8rem;
   }
 }
 
@@ -56,7 +76,7 @@ h2 {
   font-family: Montserrat;
   font-weight: 600;
   color: var(--title-color);
-  font-size: 30px;
+  font-size: 1.5rem;
   width: 100%;
 }
 
@@ -67,13 +87,28 @@ thead {
   padding: 1rem;
 }
 
-th {
-  padding: 1rem;
+.table-header-item {
+  padding: 0.8rem;
   border-bottom: 2px solid var(--grey);
+  font-size: 0.9rem;
 }
 
-td {
-  padding: 1rem;
+.table-item {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  h3 {
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-bottom: 0.15rem;
+  }
+  span {
+    color: var(--text-light);
+    font-size: 0.8rem;
+  }
+  .checkbox {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
 }
 
 table {

@@ -8,40 +8,85 @@
 
 <div class="table-container table-responsive">
   <div class="header-table-actions">
-    <mat-form-field appearance="outline" class="search">
-      <input matInput placeholder="Pesquisar por usuário" type="text" />
-    </mat-form-field>
+    <div class="form-group form-inline">
+      <input
+        placeholder="Pesquisar por usuário"
+        class="form-control ml-2"
+        type="text"
+        name="searchTerm"
+        [(ngModel)]="eventService.searchTerm"
+      />
+      <span class="ml-3" *ngIf="eventService.loading$ | async">Loading...</span>
+    </div>
+    <div class="d-flex justify-content-between p-2" style="width: 50%">
+      <ngb-pagination
+        [collectionSize]="(total$ | async)!"
+        [(page)]="eventService.page"
+        [pageSize]="eventService.pageSize"
+      >
+      </ngb-pagination>
+
+      <select
+        class="custom-select"
+        style="width: auto"
+        name="pageSize"
+        [(ngModel)]="eventService.pageSize"
+      >
+        <option [ngValue]="2">2 items per page</option>
+        <option [ngValue]="4">4 items per page</option>
+        <option [ngValue]="6">6 items per page</option>
+      </select>
+    </div>
   </div>
-  <table class="table-striped">
+  <table class="table-striped" matSort (matSortChange)="onSort($event)">
     <thead>
       <tr>
-        <th scope="col">Avatar</th>
-        <th scope="col">Usuário</th>
-        <th scope="col">Título</th>
-        <th scope="col">Data</th>
-        <th scope="col">Valor</th>
-        <th scope="col">Pago</th>
-        <th scope="col"></th>
+        <th scope="col" class="table-header-item"></th>
+        <th scope="col" class="table-header-item" mat-sort-header="name">
+          Usuário
+        </th>
+        <th scope="col" class="table-header-item" mat-sort-header="title">
+          Título
+        </th>
+        <th scope="col" class="table-header-item" mat-sort-header="date">
+          Data
+        </th>
+        <th scope="col" class="table-header-item" mat-sort-header="value">
+          Valor
+        </th>
+        <th scope="col" class="table-header-item" mat-sort-header="isPayed">
+          Pago
+        </th>
+        <th scope="col" class="table-header-item"></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let task of dataSource">
-        <td>
-          <img src="{{ task.image }}" alt="Profile Avatar" class="avatar" />
+        <td class="table-item">
+          <figure class="avatar-container">
+            <img src="{{ task.image }}" alt="Profile Avatar" class="avatar" />
+          </figure>
         </td>
-        <td>{{ task.name }}</td>
-        <td>{{ task.title }}</td>
-        <td>{{ formatTaskDate(task.date) }}</td>
-        <td>{{ formatTaskValue(task.value) }}</td>
-        <td>
+        <td class="table-item">
+          <div class="username">
+            <h3>{{ task.name }}</h3>
+
+            <span>@{{ task.username }}</span>
+          </div>
+        </td>
+        <td class="table-item">{{ task.title }}</td>
+        <td class="table-item">{{ formatTaskDate(task.date) }}</td>
+        <td class="table-item">{{ formatTaskValue(task.value) }}</td>
+        <td class="table-item">
           <input
             type="checkbox"
             name="isPayed"
+            class="checkbox"
             [checked]="task.isPayed"
             (change)="editStatus(task)"
           />
         </td>
-        <td>
+        <td class="table-item">
           <div class="table-action-buttons">
             <button (click)="editTask(task)">
               <img src="../assets/editIcon.svg" />

@@ -1,32 +1,51 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, QueryList, ViewChildren } from "@angular/core";
 import { TaskModel } from "src/app/models/task-model";
 import { TasksService } from "src/app/services/tasks.service";
 import { MatDialog } from "@angular/material/dialog";
 import { ModalCreateComponent } from "../modal-create/modal-create.component";
-import { formatDate } from "@angular/common";
+import { DecimalPipe, formatDate } from "@angular/common";
 import { DeleteConfirmComponent } from "../delete-confirm/delete-confirm.component";
+import { EventsService } from "src/app/services/events.service";
+import { SortEventModel } from "src/app/models/search-result-model";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-tasks-table",
   templateUrl: "./tasks-table.component.html",
   styleUrls: ["./tasks-table.component.scss"],
-  providers: [TasksService],
+  providers: [TasksService, DecimalPipe, EventsService],
 })
 export class TasksTableComponent implements OnInit {
   isLoading: boolean = true;
   dataSource: TaskModel[];
 
-  constructor(public tasksService: TasksService, public dialog: MatDialog) {
+  countries$: Observable<TaskModel[]>;
+  total$: Observable<number>;
+
+  constructor(
+    public tasksService: TasksService,
+    public eventService: EventsService,
+    public dialog: MatDialog
+  ) {
     this.getTasks();
   }
 
   ngOnInit(): void {}
 
-  getTasks(): void {
-    this.tasksService.getTasks().subscribe((data: TaskModel[]) => {
-      this.dataSource = data;
-      this.isLoading = false;
-    });
+  getTasks(active?, direction?): void {
+    if (active && direction) {
+      this.tasksService
+        .getTasks(active, direction)
+        .subscribe((data: TaskModel[]) => {
+          this.dataSource = data;
+          this.isLoading = false;
+        });
+    } else {
+      this.tasksService.getTasks().subscribe((data: TaskModel[]) => {
+        this.dataSource = data;
+        this.isLoading = false;
+      });
+    }
   }
 
   deleteTask(id: number): void {
@@ -38,6 +57,7 @@ export class TasksTableComponent implements OnInit {
     task.date = formatDate(task.date, "yyyy-MM-ddTHH:mm", "en-US", "-0300");
     this.openDialog(task);
   }
+
   openDialog(task: TaskModel | null): void {
     const dialogRef = this.dialog.open(ModalCreateComponent, {
       width: "40rem",
@@ -55,16 +75,18 @@ export class TasksTableComponent implements OnInit {
                 "en-US",
                 "-0300"
               ),
-              image: "https://picsum.photos/200",
+              image: "https://i.pravatar.cc/300",
               isPayed: false,
             }
           : task,
     });
 
     dialogRef.afterClosed().subscribe((task) => {
-      if (task?.id == null) {
+      console.log(task);
+      if (task && task.id === null) {
         this.tasksService.createTask(task).subscribe();
-      } else {
+      }
+      if (task && task.id) {
         this.tasksService.editTask(task).subscribe();
       }
       this.getTasks();
@@ -100,8 +122,12 @@ export class TasksTableComponent implements OnInit {
 
   editStatus(task: TaskModel) {
     task.isPayed = !task.isPayed;
-    console.log(task);
     this.tasksService.editTask(task).subscribe();
-    this.getTasks;
+    this.getTasks();
+  }
+
+  onSort({ active, direction }: SortEventModel) {
+    // resetting other headers
+    this.getTasks(active, direction);
   }
 }

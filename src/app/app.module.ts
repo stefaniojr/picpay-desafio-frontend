@@ -4,7 +4,7 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { FormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 //Material components
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -22,7 +22,8 @@ import { HeaderComponent } from "./components/header/header.component";
 import { TasksTableComponent } from "./components/tasks-table/tasks-table.component";
 import { ModalCreateComponent } from "./components/modal-create/modal-create.component";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
+import { DeleteConfirmComponent } from "./components/delete-confirm/delete-confirm.component";
+import { MatSortModule } from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -41,11 +42,13 @@ import { DeleteConfirmComponent } from './components/delete-confirm/delete-confi
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
 
     //Bootstrap
     NgbModule,
 
     //Material
+    MatSortModule,
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,
