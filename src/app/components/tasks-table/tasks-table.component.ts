@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { TaskModel } from "src/app/models/task-model";
 import { TasksService } from "src/app/services/tasks.service";
+import { MatDialog } from "@angular/material/dialog";
+import { ModalCreateComponent } from "../modal-create/modal-create.component";
+import { formatDate } from "@angular/common";
 
 @Component({
   selector: "app-tasks-table",
@@ -12,7 +15,7 @@ export class TasksTableComponent implements OnInit {
   isLoading: boolean = true;
   dataSource: TaskModel[];
 
-  constructor(public tasksService: TasksService) {
+  constructor(public tasksService: TasksService, public dialog: MatDialog) {
     this.getTasks();
   }
 
@@ -32,5 +35,36 @@ export class TasksTableComponent implements OnInit {
 
   editTask(task: TaskModel): void {
     // this.openDialog(task);
+  }
+  openDialog(task: TaskModel | null): void {
+    const dialogRef = this.dialog.open(ModalCreateComponent, {
+      width: "40rem",
+      data:
+        task === null
+          ? {
+              id: null,
+              name: "",
+              username: "",
+              title: "teste",
+              value: null,
+              date: formatDate(
+                new Date(),
+                "yyyy-MM-ddTHH:mm",
+                "en-US",
+                "-0300"
+              ),
+              image: "https://picsum.photos/200",
+              isPayed: false,
+            }
+          : task,
+    });
+
+    dialogRef.afterClosed().subscribe((task) => {
+      if (task.id == null) {
+        this.tasksService.createTask(task).subscribe();
+      } else {
+        this.tasksService.editTask(task).subscribe();
+      }
+    });
   }
 }
