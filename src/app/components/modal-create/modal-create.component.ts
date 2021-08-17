@@ -11,6 +11,11 @@ export class ModalCreateComponent implements OnInit {
   task: TaskModel;
   isCreate: boolean;
 
+  name: string = "";
+  value: string = "";
+  date: Date = new Date();
+  complete: Boolean = true;
+
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: TaskModel,
@@ -27,5 +32,29 @@ export class ModalCreateComponent implements OnInit {
 
   onCancel(): void {
     this.dialogRef.close();
+  }
+
+  changeName(event) {
+    this.name = event;
+    this.changeComplete();
+  }
+
+  changeValue(event) {
+    this.value = event;
+    this.changeComplete();
+    console.log(this.complete);
+  }
+
+  changeDate(event) {
+    this.date = event;
+    this.changeComplete();
+  }
+
+  changeComplete() {
+    if (this.date && this.name.length > 3 && Number(this.value) > 0) {
+      this.complete = false;
+    } else {
+      this.complete = true;
+    }
   }
 }

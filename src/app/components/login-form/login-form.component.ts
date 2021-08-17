@@ -37,14 +37,16 @@ export class LoginFormComponent implements OnInit {
   login = () => {
     this.usersService
       .getUser(this.email.value, this.password.value)
-      .subscribe((response: UserModel[]) => (this.user = response[0]));
+      .subscribe((response: UserModel[]) => {
+        this.user = response[0];
 
-    if (this.user.password == this.password.value) {
-      this.authService.login(this.user);
-    } else {
-      this.loginError = true;
-    }
+        if (this.user.password == this.password.value) {
+          this.authService.login(this.user);
+        } else {
+          this.loginError = true;
+        }
 
-    this.loginForm.reset();
+        this.loginForm.reset();
+      });
   };
 }

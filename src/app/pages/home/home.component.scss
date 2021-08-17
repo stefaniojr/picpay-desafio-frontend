@@ -2,4 +2,7 @@
   padding: 2rem 5rem;
   background-color: var(--background-color);
   min-height: 100vh;
+  @media (max-width: 768px) {
+    padding: 1rem 0;
+  }
 }

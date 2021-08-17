@@ -54,7 +54,11 @@
         <th scope="col" class="table-header-item" mat-sort-header="name">
           Usuário
         </th>
-        <th scope="col" class="table-header-item" mat-sort-header="title">
+        <th
+          scope="col"
+          class="table-header-item title-column"
+          mat-sort-header="title"
+        >
           Título
         </th>
         <th scope="col" class="table-header-item" mat-sort-header="date">
@@ -82,12 +86,12 @@
         </td>
         <td class="table-item">
           <div class="username">
-            <h3>{{ task.name }}</h3>
+            <h3>{{ task.name || task.username }}</h3>
 
             <span>@{{ task.username }}</span>
           </div>
         </td>
-        <td class="table-item">{{ task.title }}</td>
+        <td class="table-item" class="title-column">{{ task.title }}</td>
         <td class="table-item">{{ formatTaskDate(task.date) }}</td>
         <td class="table-item">{{ formatTaskValue(task.value) }}</td>
         <td class="table-item">

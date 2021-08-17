@@ -5,17 +5,32 @@
   <div mat-dialog-content>
     <mat-form-field appearance="outline">
       <mat-label>Usuário*</mat-label>
-      <input type="text" matInput [(ngModel)]="data.username" />
+      <input
+        type="text"
+        matInput
+        [(ngModel)]="data.username"
+        (ngModelChange)="changeName($event)"
+      />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Valor*</mat-label>
-      <input type="number" matInput [(ngModel)]="data.value" />
+      <input
+        type="number"
+        matInput
+        [(ngModel)]="data.value"
+        (ngModelChange)="changeValue($event)"
+      />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Data*</mat-label>
-      <input type="datetime-local" matInput [(ngModel)]="data.date" />
+      <input
+        type="datetime-local"
+        matInput
+        [(ngModel)]="data.date"
+        (ngModelChange)="changeDate($event)"
+      />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -31,8 +46,8 @@
       *ngIf="isCreate"
       mat-button
       [mat-dialog-close]="data"
-      cdkFocusInitial
       class="save"
+      [disabled]="complete"
     >
       SALVAR
     </button>
@@ -40,8 +55,8 @@
       *ngIf="!isCreate"
       mat-button
       [mat-dialog-close]="data"
-      cdkFocusInitial
       class="save"
+      [disabled]="complete"
     >
       EDITAR
     </button>

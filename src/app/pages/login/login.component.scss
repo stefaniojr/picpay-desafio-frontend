@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    width: 100vw;
+    width: 70%;
     background-color: var(--background-color);
 
     h2 {
@@ -50,10 +50,15 @@
       }
     }
   }
-}
-
-@media (min-width: 700px) {
-  .image {
-    display: none;
+  @media (max-width: 768px) {
+    .image {
+      display: none;
+    }
+    .login-area {
+      width: 100%;
+      h2 {
+        font-size: 1.2rem;
+      }
+    }
   }
 }
