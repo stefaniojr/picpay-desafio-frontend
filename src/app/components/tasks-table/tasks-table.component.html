@@ -14,28 +14,37 @@
         class="form-control ml-2"
         type="text"
         name="searchTerm"
-        [(ngModel)]="eventService.searchTerm"
+        (keyup)="onSearch($event)"
       />
-      <span class="ml-3" *ngIf="eventService.loading$ | async">Loading...</span>
+      <!-- <span class="ml-3" *ngIf="eventService.loading$ | async">Loading...</span> -->
     </div>
-    <div class="d-flex justify-content-between p-2" style="width: 50%">
-      <ngb-pagination
-        [collectionSize]="(total$ | async)!"
-        [(page)]="eventService.page"
-        [pageSize]="eventService.pageSize"
-      >
-      </ngb-pagination>
-
+    <div
+      class="d-flex justify-content-between p-2 paginator-container"
+      style="align-items: center"
+    >
+      <span>Exibir</span>
       <select
         class="custom-select"
         style="width: auto"
-        name="pageSize"
-        [(ngModel)]="eventService.pageSize"
+        [(ngModel)]="searchParams.pageSize"
+        (ngModelChange)="refreshPage()"
       >
-        <option [ngValue]="2">2 items per page</option>
-        <option [ngValue]="4">4 items per page</option>
-        <option [ngValue]="6">6 items per page</option>
+        <option [ngValue]="5">5</option>
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="20">20</option>
       </select>
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="searchParams.page"
+        [pageSize]="searchParams.pageSize"
+        (pageChange)="refreshPage()"
+        class="d-flex align-items-center"
+        style="margin-top: 1rem"
+        [maxSize]="5"
+        [rotate]="true"
+        [ellipses]="false"
+      >
+      </ngb-pagination>
     </div>
   </div>
   <table class="table-striped" matSort (matSortChange)="onSort($event)">
@@ -54,7 +63,11 @@
         <th scope="col" class="table-header-item" mat-sort-header="value">
           Valor
         </th>
-        <th scope="col" class="table-header-item" mat-sort-header="isPayed">
+        <th
+          scope="col"
+          class="table-header-item sort"
+          mat-sort-header="isPayed"
+        >
           Pago
         </th>
         <th scope="col" class="table-header-item"></th>

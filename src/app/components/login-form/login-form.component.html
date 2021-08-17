@@ -7,6 +7,7 @@
         matInput
         placeholder="example@mail.com"
         type="email"
+        required
       />
       <mat-error *ngIf="loginFormGroup.get('mail').errors?.required"
         >*Obrigatório</mat-error
@@ -17,7 +18,7 @@
   <p>
     <mat-form-field appearance="outline" class="input-login">
       <mat-label>Senha</mat-label>
-      <input formControlName="password" matInput type="password" />
+      <input formControlName="password" matInput type="password" required />
       <mat-error *ngIf="loginFormGroup.get('password').errors?.required"
         >*Obrigatório</mat-error
       >

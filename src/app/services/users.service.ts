@@ -5,13 +5,13 @@ import { UserModel } from "../models/user-model";
 
 @Injectable()
 export class UsersService {
-  usersApiUrl = "http://localhost:3000/users";
+  usersApiUrl = "http://localhost:3000/account";
   constructor(private http: HttpClient) {}
 
   getUser(mail?: String, password?: String): Observable<UserModel[]> {
     if (mail && password) {
       return this.http.get<UserModel[]>(
-        `${this.usersApiUrl}?mail=$mail}&password=${password}`
+        `${this.usersApiUrl}?mail=${mail}&password=${password}`
       );
     }
   }

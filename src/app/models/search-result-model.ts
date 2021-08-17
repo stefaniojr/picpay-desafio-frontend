@@ -1,7 +1,7 @@
 import { TaskModel } from "./task-model";
 
 export interface SearchResultModel {
-  countries: TaskModel[];
+  tasks: TaskModel[];
   total: number;
 }
 
