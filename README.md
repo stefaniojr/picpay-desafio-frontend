@@ -5,7 +5,7 @@ Abaixo você encontrará todos as informações necessárias para iniciar o seu 
 
 ## Avisos antes de começar
 
-- Certifique-se que você recebeu um email de convite de acesso ao layout proposto no **Figma**, caso não tenha recebido, solicite o acesso com o Recruiter. Também há screenshoots do Figma na pasta screenshots. Você não é obrigado a seguir o layout do figma, ele é apenas uma base para que você entenda melhor o desafio proposto.
+- Certifique-se que você recebeu um mail de convite de acesso ao layout proposto no **Figma**, caso não tenha recebido, solicite o acesso com o Recruiter. Também há screenshoots do Figma na pasta screenshots. Você não é obrigado a seguir o layout do figma, ele é apenas uma base para que você entenda melhor o desafio proposto.
 
 - Para a entrega do teste você precisará ter two factor habilitado na sua conta do GitHub, você poderá ver o passo a passo nesse tutorial: https://help.github.com/pt/github/authenticating-to-github/configuring-two-factor-authentication
 
@@ -81,7 +81,7 @@ Tasks - Esta é sua lista com agenda de pagamentos. Aqui você cadastrar, editar
 ` { "id": 5, "name": "Anthea Pundy", "username": "apundy4", "title": "Software Engineer III", "value": 177.19, "date": "2021-01-01T14:09:51Z", "image": "https://robohash.org/quiaautomnis.png?size=150x150&set=set1", "isPayed": true },`
 
 Account - você usará este usuário para Login da plataforma<br />
-`{ "id": 0, "name": "usuario", "email": "usuario@gmail.com", "password": "usuario" }`
+`{ "id": 0, "name": "usuario", "mail": "usuario@gmail.com", "password": "usuario" }`
 
 <br/>
 
@@ -92,7 +92,7 @@ paginate:<br />
 `GET: /tasks?_page=7&_limit=20`
 
 **Usuário para utilizar no login:**<br />
-` "email": "usuario@gmail.com", "password": "usuario"`
+` "mail": "usuario@gmail.com", "password": "usuario"`
 <br/>
 <br/>
 

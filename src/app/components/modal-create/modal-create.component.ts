@@ -14,7 +14,7 @@ export class ModalCreateComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: TaskModel,
-    public dialogRef: MatDialogRef<ModalCreateComponent>
+    private dialogRef: MatDialogRef<ModalCreateComponent>
   ) {}
 
   ngOnInit(): void {

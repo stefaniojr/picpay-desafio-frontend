@@ -33,7 +33,7 @@ export class TasksTableComponent implements OnInit {
   tasks$: Observable<TaskModel[]>;
   total$: Observable<number>;
 
-  constructor(public tasksService: TasksService, public dialog: MatDialog) {
+  constructor(private tasksService: TasksService, private dialog: MatDialog) {
     this.getTasks(this.searchParams);
   }
 

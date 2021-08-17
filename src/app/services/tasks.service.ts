@@ -35,9 +35,6 @@ export class TasksService {
       observe: "response",
       params: new HttpParams()
         .set("name_like", params.searchTerm)
-        // .set("username_like?", searchTerm)
-        // .set("date_like", searchTerm)
-        // .set("value_like", searchTerm)
         .set("_page", params.page)
         .set("_limit", params.pageSize)
         .set("_sort", params.sortColumn)

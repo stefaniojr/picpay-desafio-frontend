@@ -8,11 +8,9 @@ export class UsersService {
   usersApiUrl = "http://localhost:3000/account";
   constructor(private http: HttpClient) {}
 
-  getUser(mail?: String, password?: String): Observable<UserModel[]> {
-    if (mail && password) {
-      return this.http.get<UserModel[]>(
-        `${this.usersApiUrl}?mail=${mail}&password=${password}`
-      );
-    }
+  getUser(email: String, password: String): Observable<UserModel[]> {
+    return this.http.get<UserModel[]>(
+      `${this.usersApiUrl}?mail=${email}&password=${password}`
+    );
   }
 }
