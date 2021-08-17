@@ -12,6 +12,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatSortModule } from "@angular/material/sort";
 
 //Aplication components
 import { AppComponent } from "./app.component";
@@ -21,9 +22,7 @@ import { HomeComponent } from "./pages/home/home.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { TasksTableComponent } from "./components/tasks-table/tasks-table.component";
 import { ModalCreateComponent } from "./components/modal-create/modal-create.component";
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { DeleteConfirmComponent } from "./components/delete-confirm/delete-confirm.component";
-import { MatSortModule } from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -54,7 +53,6 @@ import { MatSortModule } from "@angular/material/sort";
     MatInputModule,
     MatButtonModule,
     MatToolbarModule,
-    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

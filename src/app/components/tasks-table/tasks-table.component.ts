@@ -37,7 +37,9 @@ export class TasksTableComponent implements OnInit {
     this.getTasks(this.searchParams);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getTasks(this.searchParams);
+  }
 
   getTasks(params: SortStateModel): void {
     this.tasksService.getTasks(params).subscribe(({ headers, body }) => {
@@ -57,6 +59,8 @@ export class TasksTableComponent implements OnInit {
   }
 
   openDialog(task: TaskModel | null): void {
+    this.getTasks(this.searchParams);
+
     const dialogRef = this.dialog.open(ModalCreateComponent, {
       width: "40rem",
       data:
@@ -80,7 +84,6 @@ export class TasksTableComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((task) => {
-      console.log(task);
       if (task && task.id === null) {
         this.tasksService.createTask(task).subscribe();
       }
