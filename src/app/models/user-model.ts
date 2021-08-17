@@ -1,6 +1,6 @@
 export class UserModel {
-  id: Number;
-  name: String;
-  email: String;
-  password: String;
+  id: Number = 0;
+  name: String = "";
+  email: String = "";
+  password: String = "";
 }

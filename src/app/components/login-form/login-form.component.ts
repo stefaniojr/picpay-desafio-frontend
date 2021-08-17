@@ -35,12 +35,16 @@ export class LoginFormComponent implements OnInit {
   }
 
   login = () => {
+    console.log(this.user.password);
     this.usersService
       .getUser(this.email.value, this.password.value)
       .subscribe((response: UserModel[]) => {
         this.user = response[0];
 
-        if (this.user.password == this.password.value) {
+        if (
+          this.user?.password == this.password.value &&
+          this.user?.email === this.email.value
+        ) {
           this.authService.login(this.user);
         } else {
           this.loginError = true;
