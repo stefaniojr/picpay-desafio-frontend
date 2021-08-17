@@ -88,7 +88,7 @@
       "value": 175.59,
       "date": "2021-05-12T05:17:48Z",
       "image": "https://robohash.org/quismaximefuga.png?size=150x150&set=set1",
-      "isPayed": true
+      "isPayed": false
     },
     {
       "id": 10,
@@ -295,7 +295,7 @@
       "name": "Nicoline Squier",
       "username": "nsquiert",
       "title": "Senior Cost Accountant",
-      "value": 380.0,
+      "value": 380,
       "date": "2020-06-28T09:27:25Z",
       "image": "https://robohash.org/etperspiciatisminima.png?size=150x150&set=set1",
       "isPayed": false
@@ -725,7 +725,7 @@
       "name": "Cesare Collip",
       "username": "ccollip20",
       "title": "Office Assistant I",
-      "value": 123.0,
+      "value": 123,
       "date": "2021-04-19T01:53:14Z",
       "image": "https://robohash.org/velnumquamqui.png?size=150x150&set=set1",
       "isPayed": false
@@ -918,7 +918,7 @@
       "value": 210.92,
       "date": "2021-05-21T11:48:08Z",
       "image": "https://robohash.org/etomniset.png?size=150x150&set=set1",
-      "isPayed": true
+      "isPayed": false
     },
     {
       "id": 93,
@@ -1258,7 +1258,7 @@
       "value": 347.37,
       "date": "2021-05-12T22:36:29Z",
       "image": "https://robohash.org/earumetfugit.png?size=150x150&set=set1",
-      "isPayed": true
+      "isPayed": false
     },
     {
       "id": 127,

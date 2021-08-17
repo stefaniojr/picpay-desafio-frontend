@@ -51,13 +51,7 @@
     >
       SALVAR
     </button>
-    <button
-      *ngIf="!isCreate"
-      mat-button
-      [mat-dialog-close]="data"
-      class="save"
-      [disabled]="complete"
-    >
+    <button *ngIf="!isCreate" mat-button [mat-dialog-close]="data" class="save">
       EDITAR
     </button>
   </div>
