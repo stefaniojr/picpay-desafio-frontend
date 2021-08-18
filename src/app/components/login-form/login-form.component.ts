@@ -35,7 +35,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   login = () => {
-    console.log(this.user.password);
     this.usersService
       .getUser(this.email.value, this.password.value)
       .subscribe((response: UserModel[]) => {
