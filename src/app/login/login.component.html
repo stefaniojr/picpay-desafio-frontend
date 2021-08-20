@@ -1,0 +1,36 @@
+<main class="content">
+  <section class="content-left">
+    <h2 class="content-left__title">Bem vindo de volta</h2>
+    <form class="content-left-form">
+      <label for="email" class="content-left-form__label">Email</label>
+      <input
+        class="content-left-form__input"
+        type="text"
+        name="email"
+        id="email"
+        maxlength="100"
+        placeholder="Digite seu e-mail"
+        autofocus="true"
+      />
+
+      <label for="password" class="content-left-form__label">Senha</label>
+      <input
+        class="content-left-form__input"
+        type="password"
+        name="password"
+        id="password"
+        maxlength="100"
+        placeholder="Digite seu password"
+      />
+
+      <button class="content-left-form__button">Entrar</button>
+    </form>
+    <h1 [routerLink]="['/dashboard']">Ir para o dashboard</h1>
+  </section>
+  <section class="content-right">
+    <img
+      src="../../assets/images/man-doing-online-payment 1.png"
+      alt="Imagem de boas vindas a tela de login"
+    />
+  </section>
+</main>

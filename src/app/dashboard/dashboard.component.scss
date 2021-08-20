@@ -1,0 +1,113 @@
+.header {
+  height: 120px;
+  background-color: #002d69;
+  display: flex;
+  flex-direction: row;
+
+  &-content-left {
+    color: #fff;
+    width: 50%;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &__text {
+      font-size: 28px;
+      font-family: Montserrat;
+    }
+  }
+
+  &-content-right {
+    color: #fff;
+    width: 50%;
+    padding-right: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &-figure {
+      width: 80px;
+      height: 80px;
+      background-color: #fff;
+      border-radius: 100%;
+      cursor: pointer;
+
+      &__figure {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      &-dropdown {
+        min-width: 200px;
+        position: absolute;
+        right: 40px;
+        background-color: #fff;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        visibility: hidden;
+
+        &__ul {
+          padding-left: 0;
+        }
+
+        &__li {
+          list-style: none;
+          margin-bottom: 15px;
+          color: #333;
+          font-size: 20px;
+          cursor: pointer;
+          padding: 20px;
+
+          &:hover {
+            background-color: #f2f2f2;
+          }
+        }
+      }
+    }
+  }
+}
+
+.main {
+  background-color: #f2f2f2;
+  height: 100vh;
+  padding: 60px 200px;
+
+  &-title {
+    display: flex;
+    flex-direction: row;
+
+    &__text {
+      width: 50%;
+      font-family: Montserrat;
+      font-size: 35px;
+      color: #333;
+    }
+
+    &__option {
+      width: 50%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+
+      &-button {
+        text-transform: uppercase;
+        background-color: #007dfe;
+        border-color: unset;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        border: none;
+        outline: none;
+        letter-spacing: 3px;
+        cursor: pointer;
+
+        &:hover {
+          transition: 0.2s;
+          background-color: #0c73da;
+        }
+      }
+    }
+  }
+}
