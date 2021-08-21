@@ -1,1 +1,26 @@
-<p>login works!</p>
+<html>
+
+<body>
+    <div class="login-container">
+        <div class="login-form-side">
+            <div class="form-wrapper">
+                <img src="./../../../../assets/payfriends-logo.svg" alt="">
+                <p class="welcome-text">Boas vindas novamente!</p>
+                    <form [formGroup]="formulario" (ngSubmit)="autenticar()">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Senha" formControlName="senha">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-xs col-12 w-100">ENTRAR</button>
+                    </form>   
+            </div>
+        </div>
+        <div class="landing-art-side centering-content">
+            <img src="./../../../../assets/man-doing-online-payment.svg" alt="">
+        </div>
+    </div>
+</body>
+
+</html>
