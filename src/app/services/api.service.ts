@@ -17,6 +17,22 @@ export class ApiService {
   public static TASKS_URL = 'tasks/';
 
   /**
+   * Método para atualizar o pagamento
+   * @param pagamento
+   */
+  public async updatePayment(payment: Task): Promise<any> {
+    return await this.makePut(ApiService.TASKS_URL, payment, Task);
+  }
+
+  /**
+   * Método para cadastrar pagamento
+   * @param pagamento
+   */
+  public async addPayment(payment: Task): Promise<any> {
+    return await this.makePost(ApiService.TASKS_URL, payment, Task);
+  }
+
+  /**
    * Método para realizar login
    * @param email do usuário
    * @param password senha
@@ -37,7 +53,6 @@ export class ApiService {
    * @param endpoint endpoint da API
    * @param data dados a serem submetidos
    * @param model modelo de retorno da requisição
-   * @param authorize necessita de autenticação?
    */
   private async makePost<T>(endpoint: string, data: any, model: ClassConstructor<T>): Promise<any> {
     const res = await this.http.post(this.buildURL(endpoint), data).toPromise();
@@ -53,7 +68,6 @@ export class ApiService {
    * @param endpoint endpoint da API
    * @param data dados a serem submetidos
    * @param model modelo de retorno da requisição
-   * @param authorize necessita de autenticação?
    */
   private async makeGet<T>(endpoint: string, params: any, model: ClassConstructor<T>): Promise<any> {
     const res = await this.http.get(this.buildURL(endpoint), { params }).toPromise();
@@ -63,6 +77,36 @@ export class ApiService {
       return plainToClass(model, res as any);
     }
   }
+
+  /**
+   * Realiza uma requisição do tipo PUT
+   * @param endpoint endpoint da API
+   * @param data dados a serem submetidos
+   * @param model modelo de retorno da requisição
+   */
+  private async makePut<T>(endpoint: string, data: any, model: ClassConstructor<T>): Promise<any> {
+    const res = await this.http.put(this.buildURL(endpoint) + data.id, data).toPromise();
+    if (typeof (model as any).toClass === 'function') {
+      return (model as any).toClass(res as any);
+    } else {
+      return plainToClass(model, res as any);
+    }
+  }
+
+    /**
+   * Realiza uma requisição do tipo DELETE
+   * @param endpoint endpoint da API
+   * @param data dados a serem submetidos
+   * @param model modelo de retorno da requisição
+   */
+     private async makeDelete<T>(endpoint: string, data: any, model: ClassConstructor<T>): Promise<any> {
+      const res = await this.http.delete(this.buildURL(endpoint) + data.id, data).toPromise();
+      if (typeof (model as any).toClass === 'function') {
+        return (model as any).toClass(res as any);
+      } else {
+        return plainToClass(model, res as any);
+      }
+    }
 
   /**
    * Retorna a URL baseado no endpoint especificado
