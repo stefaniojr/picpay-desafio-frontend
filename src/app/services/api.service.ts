@@ -26,7 +26,7 @@ export class ApiService {
   }
 
   /**
-   * Recupera o itinerário para o usuário
+   * Recupera as tasks para o usuário
    */
   public async getTasks(): Promise<Task[]> {
     return await this.makeGet(ApiService.TASKS_URL, {}, Task);
