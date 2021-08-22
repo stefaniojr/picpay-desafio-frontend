@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
+import { Task } from './models/task.model';
 
 @Component({
   selector: 'app-payments',
@@ -7,9 +9,13 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./payments.component.scss'],
 })
 export class PaymentsComponent implements OnInit {
-  constructor(private auth: AuthService) {}
+  public tasks: Array<Task>;
 
-  ngOnInit(): void {}
+  constructor(private auth: AuthService, private api: ApiService) {}
+
+  async ngOnInit() {
+    this.tasks = await this.api.getTasks();
+  }
 
   public async logout() {
     // logout da aplicação.
