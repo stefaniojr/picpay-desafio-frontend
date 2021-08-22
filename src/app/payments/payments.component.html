@@ -5,11 +5,15 @@
                 <img src="./../../../../assets/payfriends-logo-blank.svg" alt="">
             </div>
             <div class="p-2 d-flex flex-row-reverse align-items-center">
+
                 <div class="p-2">
                     <a class="logout-link" (click)="logout()">Sair</a>
                 </div>
-                <div class="p-2"><img src="https://github.com/mdo.png" alt="" width="45" height="45"
+                <div class="p-2"><img src="./../../../../assets/darth_vader_profile.png" alt="" width="45" height="45"
                         class="rounded-circle">
+                </div>
+                <div class="p-2" style="color: white;" *ngIf="profile_data">
+                    Olá,<span class="usuario-nome-text"> {{profile_data.name}}!</span>
                 </div>
             </div>
         </div>
@@ -22,17 +26,21 @@
         <div class="row">
             <div class="col d-flex flex-row-reverse">
                 <button class="btn btn-primary btn-xs">ADICIONAR PAGAMENTO</button>
-            </div> 
+            </div>
         </div>
         <div class="row">
-            <div class="p-4 bg-white"><ul class="list-group">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-              </ul></div>
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                <input type="search" class="form-control" placeholder="Pesquisar por usuário..." aria-label="Search">
+            </form>
+            <div class="p-4 bg-white">
+                <ul class="list-group">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+            </div>
         </div>
-    </div> 
+    </div>
 </body>
-

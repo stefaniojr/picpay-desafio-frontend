@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { classToPlain } from 'class-transformer';
 import { BehaviorSubject } from 'rxjs';
 import { Token } from './../login/models/token.model';
-import { ApiService } from './api.service';
 import { StorageService } from './storage.service';
 
 @Injectable({
@@ -13,16 +12,16 @@ export class AuthService {
   public loggedIn = new BehaviorSubject(null);
   public loggedOut = new BehaviorSubject(null);
 
-  TOKEN = 'token';
+  key = 'token';
 
-  constructor(private storage: StorageService, private api: ApiService, private router: Router) {}
+  constructor(private storage: StorageService, private router: Router) {}
 
   /**
    * Realiza o login do usuário
    * @param token token de autenticação
    */
   async login(token: Token) {
-    await this.storage.set(this.TOKEN, classToPlain(token));
+    await this.storage.set(this.key, classToPlain(token));
     this.loggedIn.next(token);
   }
 
@@ -39,7 +38,7 @@ export class AuthService {
    * Verifica se o usuário está autenticado
    */
   public async isAuthenticated(): Promise<boolean> {
-    const token = await this.storage.get(this.TOKEN);
+    const token = await this.storage.get(this.key);
     return token != null;
   }
 }

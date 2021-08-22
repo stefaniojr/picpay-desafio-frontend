@@ -1703,10 +1703,10 @@
   ],
   "users": [
     {
+      "id": 0,
+      "name": "Darth Vader",
       "email": "usuario@gmail.com",
-      "name": "usuario",
-      "password": "$2a$10$X0wsjKlpuo/VriL4RcvnfOSVzAiUpsvPv2.fRKh8W5zHtvg1HMNKq",
-      "id": 1
+      "password": "$2a$10$X0wsjKlpuo/VriL4RcvnfOSVzAiUpsvPv2.fRKh8W5zHtvg1HMNKq"
     }
   ]
 }
