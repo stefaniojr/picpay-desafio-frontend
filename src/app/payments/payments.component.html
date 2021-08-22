@@ -1,18 +1,31 @@
-<header class="p-4">
-    <div class="d-flex justify-content-between align-items-center">
-        <div class="p-2">
-            <img src="./../../../../assets/payfriends-logo-blank.svg" alt="">
-        </div>
-        <div class="p-2 d-flex flex-row-reverse align-items-center">
+<body scroll="no">
+    <header class="p-4">
+        <div class="d-flex justify-content-between align-items-center">
             <div class="p-2">
-                <a class="logout-link" (click)="logout()">Sair</a>
+                <img src="./../../../../assets/payfriends-logo-blank.svg" alt="">
             </div>
-            <div class="p-2"><img src="https://github.com/mdo.png" alt="" width="45" height="45" class="rounded-circle">
+            <div class="p-2 d-flex flex-row-reverse align-items-center">
+                <div class="p-2">
+                    <a class="logout-link" (click)="logout()">Sair</a>
+                </div>
+                <div class="p-2"><img src="https://github.com/mdo.png" alt="" width="45" height="45"
+                        class="rounded-circle">
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<body>
-
+    <div class="container">
+        <div class="row">
+            <p class="meus-pagamentos-text">Meus pagamentos</p>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary btn-xs">ADICIONAR PAGAMENTO</button>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="p-4 bg-white">Lista de pagamentos vai aqui</div>
+        </div>
+      </div>
 </body>
