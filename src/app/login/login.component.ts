@@ -25,18 +25,17 @@ export class LoginComponent implements OnInit {
 
   public async onLogin() {
     if (this.form.valid) {
-      this.loading = true;
+      this.loading = true; // inicia carregamento
       try {
-        const token = await this.api.login(this.form.value.email, this.form.value.password);
+        const token = await this.api.login(this.form.value.email, this.form.value.password); // faz requisição à api e recupera o token
         // realiza o login do usuário
-        console.log(token);
-        await this.auth.login(token);
-        this.router.navigate(['/']);
-        this.form.reset();
+        await this.auth.login(token); // salva o token
+        this.router.navigate(['/']); // redireciona para root path
+        this.form.reset(); // reseta o form
       } catch (e) {
         console.log(e);
       }
-      this.loading = false;
+      this.loading = false; // finaliza carregamento
     }
   }
 }

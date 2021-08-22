@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
   constructor(public http: HttpClient) {}
   /**
-   * Account URLS
+   * URLS
    */
   public static LOGIN_URL = 'login/';
 
@@ -31,7 +31,6 @@ export class ApiService {
    * @param authorize necessita de autenticação?
    */
   private async makePost<T>(endpoint: string, data: any, model: ClassConstructor<T>): Promise<any> {
-    // try {
     const res = await this.http.post(this.buildURL(endpoint), data).toPromise();
     if (typeof (model as any).toClass === 'function') {
       return (model as any).toClass(res as any);

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { classToPlain, plainToClass } from 'class-transformer';
+import { classToPlain } from 'class-transformer';
 import { BehaviorSubject } from 'rxjs';
 import { Token } from './../login/models/token.model';
 import { ApiService } from './api.service';
@@ -33,13 +33,6 @@ export class AuthService {
     await this.storage.clear();
     this.loggedOut.next(true);
     this.router.navigate(['/login']);
-  }
-
-  /**
-   * Recupera o token de autenticação
-   */
-  public async getToken(): Promise<Token> {
-    return plainToClass(Token, await this.storage.get(this.TOKEN));
   }
 
   /**
