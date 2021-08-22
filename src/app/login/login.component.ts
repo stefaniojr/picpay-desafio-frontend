@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup; // define um formulário a ser usado para login.
   public loading = false;
 
-  constructor(private fb: FormBuilder, private api: ApiService, private router: Router) {}
+  constructor(private fb: FormBuilder, private api: ApiService, private router: Router, private auth: AuthService) {}
 
   async ngOnInit() {
     // inicia fiels dos formulários.
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
         const token = await this.api.login(this.form.value.email, this.form.value.password);
         // realiza o login do usuário
         console.log(token);
-        //await this.auth.login(token);
+        await this.auth.login(token);
         this.router.navigate(['/']);
         this.form.reset();
       } catch (e) {
