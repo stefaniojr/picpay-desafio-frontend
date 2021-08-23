@@ -1,4 +1,5 @@
 <body scroll="no">
+    <!-- header da aplicação -->
     <header class="p-4">
         <div class="d-flex justify-content-between align-items-center">
             <div class="p-2">
@@ -18,7 +19,7 @@
             </div>
         </div>
     </header>
-
+    <!-- container com a região de pagamentos -->
     <div class="container">
         <div class="row">
             <p class="meus-pagamentos-text">Meus pagamentos</p>
@@ -38,35 +39,37 @@
                 <mat-paginator [length]="payments.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"
                     aria-label="Select page">
                 </mat-paginator>
+                <!-- tabela e suas linhas e colunas -->
                 <table mat-table [dataSource]="dataSource" matSort matSortActive="created" matSortDisableClear
                     matSortDirection="desc">
+                    <!-- coluna user -->
                     <ng-container matColumnDef="username">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Usuário</th>
                         <td mat-cell *matCellDef="let row"> {{row.name}} <br> {{row.username}}</td>
                     </ng-container>
-
+                    <!-- coluna título -->
                     <ng-container matColumnDef="title">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Título</th>
                         <td mat-cell *matCellDef="let row"> {{row.title}}</td>
                     </ng-container>
-
+                    <!-- coluna data -->
                     <ng-container matColumnDef="date">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Data</th>
                         <td mat-cell *matCellDef="let row"> {{row.date}}</td>
                     </ng-container>
-
+                    <!-- coluna valor -->
                     <ng-container matColumnDef="value">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Valor</th>
                         <td mat-cell *matCellDef="let row">R$ {{row.value}}</td>
                     </ng-container>
-
+                    <!-- coluna checkbox de pagamento -->
                     <ng-container matColumnDef="isPayed">
                         <th mat-header-cell *matHeaderCellDef>Pago</th>
-                        <td mat-cell *matCellDef="let row"><input class="form-check-input" type="checkbox"
-                                id="chk1" [(ngModel)]="row.isPayed" (change)="onChangeCheckBox($event, row)">
+                        <td mat-cell *matCellDef="let row"><input class="form-check-input" type="checkbox" id="chk1"
+                                [(ngModel)]="row.isPayed" (change)="onChangeCheckBox($event, row)">
                         </td>
                     </ng-container>
-
+                    <!-- coluna de ações: editar e deletar -->
                     <ng-container matColumnDef="actions">
                         <th mat-header-cell *matHeaderCellDef></th>
                         <td mat-cell *matCellDef="let row">
@@ -76,9 +79,9 @@
                                 <img type="button" data-bs-toggle="modal" data-bs-target="#deleteModal"
                                     (click)="onDelete(row)" class="icon" src="./../../assets/delete_icon.svg" alt="">
                             </div>
-
                         </td>
                     </ng-container>
+                    <!-- definindo colunas -->
                     <tr mat-header-row *matHeaderRowDef="columns"></tr>
                     <tr mat-row *matRowDef="let row; columns: columns;"></tr>
                 </table>
