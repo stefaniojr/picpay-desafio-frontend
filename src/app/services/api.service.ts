@@ -33,6 +33,14 @@ export class ApiService {
   }
 
   /**
+   * Método para deletar um pagamento
+   * @param pagamento
+   */
+     public async deletePayment(payment: Task): Promise<any> {
+      return await this.makeDelete(ApiService.TASKS_URL, payment, Task);
+    }
+
+  /**
    * Método para realizar login
    * @param email do usuário
    * @param password senha
