@@ -6,7 +6,8 @@ import { Task } from './models/task.model';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { RouterLinkWithHref } from '@angular/router';
 
 @Component({
   selector: 'app-payments',
@@ -42,13 +43,14 @@ export class PaymentsComponent implements OnInit {
 
   async ngOnInit() {
     this.formValue = this.fb.group({
-      name: [''],
-      username: [''],
-      title: [''],
-      value: [''],
-      date: [''],
-      image: [''],
-      isPayed: false,
+      id: new FormControl(this.paymentObj.id),
+      name: new FormControl(this.paymentObj.name),
+      username: new FormControl(this.paymentObj.username),
+      title: new FormControl(this.paymentObj.title),
+      value: new FormControl(this.paymentObj.value),
+      date: new FormControl(this.paymentObj.date),
+      image: new FormControl(this.paymentObj.image),
+      isPayed: new FormControl(this.paymentObj.isPayed),
     });
     this.setPayments();
   }
@@ -165,14 +167,9 @@ export class PaymentsComponent implements OnInit {
 
   async onChangeCheckBox(event, row: Task) {
     // constroi objeto com os valores da linha
-    this.paymentObj.id = row.id;
-    this.paymentObj.name = row.name;
-    this.paymentObj.username = row.username;
-    this.paymentObj.title = row.title;
-    this.paymentObj.value = row.value;
-    this.paymentObj.date = row.date;
-    this.paymentObj.image = row.image;
-    this.paymentObj.isPayed = event.target.checked;
+    row.isPayed = event.target.checked;
+    this.rowToForm(row);
+    this.formToObj();
 
     try {
       const response = await this.api.updatePayment(this.paymentObj);
