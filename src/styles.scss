@@ -1,10 +1,17 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config($font-family: '"Lato", sans-serif;');
+@include mat-core($custom-typography);
+
 * {
   box-sizing: border-box;
 }
 
 html,
 body {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif !important;
   margin: 0;
   padding: 0;
 }
