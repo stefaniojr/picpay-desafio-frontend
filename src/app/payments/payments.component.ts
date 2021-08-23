@@ -14,19 +14,21 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./payments.component.scss'],
 })
 export class PaymentsComponent implements OnInit {
-  public tasks: Array<Task> = [];
+  public payments: Array<Task> = [];
   public profileData: any;
   pageEvent: PageEvent;
 
-  taskObj: Task = new Task();
+  paymentObj: Task = new Task(); // objeto auxiliar
   paymentToDelete: Task = new Task(); // para criar cópia a ser passada via modal;
 
   formValue!: FormGroup;
 
   dataSource: MatTableDataSource<Task>;
-  columns: Array<string> = ['username', 'title', 'date', 'value', 'isPayed', 'actions'];
+  columns: Array<string> = ['username', 'title', 'date', 'value', 'isPayed', 'actions']; // colunas necessárias para a tabela
 
   public isEditing = false; // variavel de controle
+
+  public isLoading = false; // variável de controle para indicar carregamento
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -37,7 +39,7 @@ export class PaymentsComponent implements OnInit {
     private storage: StorageService,
     private fb: FormBuilder
   ) {
-    this.storage.get('token').then((data) => (this.profileData = data.user));
+    this.storage.get('token').then((data) => (this.profileData = data.user)); // recupera dados do usuário logado do local storage.
   }
 
   async ngOnInit() {
@@ -50,38 +52,39 @@ export class PaymentsComponent implements OnInit {
       image: [''],
       isPayed: false,
     });
-
-    this.api.getTasks().then((response) => {
-      this.tasks = response;
-      this.dataSource = new MatTableDataSource(this.tasks);
+    // recupera dados para a tabela e possibilita ordenação e paginação.
+    this.api.getPayments().then((response) => {
+      this.payments = response;
+      this.dataSource = new MatTableDataSource(this.payments);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
   }
 
   clickAddPayment() {
-    this.isEditing = false;
+    this.isEditing = false; // entra em modo edição
     this.formValue.reset(); // reseta o form
   }
 
   newPayment() {
-    this.taskObj.name = this.formValue.value.name;
-    this.taskObj.username = this.formValue.value.username;
-    this.taskObj.title = this.formValue.value.title;
-    this.taskObj.value = this.formValue.value.value;
-    this.taskObj.date = this.formValue.value.date;
+    // passa valores do form para o objeto auxiliar.
+    this.paymentObj.name = this.formValue.value.name;
+    this.paymentObj.username = this.formValue.value.username;
+    this.paymentObj.title = this.formValue.value.title;
+    this.paymentObj.value = this.formValue.value.value;
+    this.paymentObj.date = this.formValue.value.date;
 
     try {
-      const response = this.api.addPayment(this.taskObj);
+      const response = this.api.addPayment(this.paymentObj);
       alert('Adicionado!');
       // fecha o modal
       let ref = document.getElementById('cancelPayment');
       ref?.click();
       this.formValue.reset(); // reseta o form
       // atualiza lista de pagamentos
-      this.api.getTasks().then((response) => {
-        this.tasks = response;
-        this.dataSource = new MatTableDataSource(this.tasks);
+      this.api.getPayments().then((response) => {
+        this.payments = response;
+        this.dataSource = new MatTableDataSource(this.payments);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       });
@@ -102,9 +105,9 @@ export class PaymentsComponent implements OnInit {
       let ref = document.getElementById('cancelDeletePayment');
       ref?.click();
       // atualiza lista de pagamentos
-      this.api.getTasks().then((response) => {
-        this.tasks = response;
-        this.dataSource = new MatTableDataSource(this.tasks);
+      this.api.getPayments().then((response) => {
+        this.payments = response;
+        this.dataSource = new MatTableDataSource(this.payments);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       });
@@ -116,38 +119,40 @@ export class PaymentsComponent implements OnInit {
   onEdit(row: Task) {
     this.isEditing = true;
     // setando valores da tabela selecionada
-    this.taskObj.id = row.id;
+    this.paymentObj.id = row.id;
     this.formValue.controls['name'].setValue(row.name);
     this.formValue.controls['username'].setValue(row.username);
     this.formValue.controls['title'].setValue(row.title);
     this.formValue.controls['value'].setValue(row.value);
     this.formValue.controls['date'].setValue(row.date);
+    this.formValue.controls['image'].setValue(row.image);
+    this.formValue.controls['isPayed'].setValue(row.isPayed);
   }
 
   changePayment() {
     // atualizando valores editados no modal
-    this.taskObj.name = this.formValue.value.name;
-    this.taskObj.username = this.formValue.value.username;
-    this.taskObj.title = this.formValue.value.title;
-    this.taskObj.value = this.formValue.value.value;
-    this.taskObj.date = this.formValue.value.date;
+    this.paymentObj.name = this.formValue.value.name;
+    this.paymentObj.username = this.formValue.value.username;
+    this.paymentObj.title = this.formValue.value.title;
+    this.paymentObj.value = this.formValue.value.value;
+    this.paymentObj.date = this.formValue.value.date;
 
     try {
-      const response = this.api.updatePayment(this.taskObj);
+      const response = this.api.updatePayment(this.paymentObj);
       alert('Atualizado!');
       // fecha o modal
       let ref = document.getElementById('cancelPayment');
       ref?.click();
       this.formValue.reset(); // reset forma
       // atualiza lista de pagamentos
-      this.api.getTasks().then((response) => {
-        this.tasks = response;
-        this.dataSource = new MatTableDataSource(this.tasks);
+      this.api.getPayments().then((response) => {
+        this.payments = response;
+        this.dataSource = new MatTableDataSource(this.payments);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       });
     } catch (e) {
-      console.log('something went wrong...');
+      alert('Algo deu errado. Tente novamente!');
     }
   }
 
@@ -160,4 +165,30 @@ export class PaymentsComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  onChangeCheckBox(event, row: Task){
+    this.paymentObj.id = row.id;
+    this.paymentObj.name = row.name;
+    this.paymentObj.username = row.username;
+    this.paymentObj.title = row.title;
+    this.paymentObj.value = row.value;
+    this.paymentObj.date = row.date;
+    this.paymentObj.image = row.image;
+    this.paymentObj.isPayed = event.target.checked;
+
+    try {
+      const response = this.api.updatePayment(this.paymentObj);
+      
+      this.api.getPayments().then((response) => {
+        this.payments = response;
+        this.dataSource = new MatTableDataSource(this.payments);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      });
+    } catch (e) {
+      alert('Algo deu errado. Tente novamente!');
+    }
+
+  }
+  
 }

@@ -52,7 +52,7 @@ export class ApiService {
   /**
    * Recupera as tasks para o usuário
    */
-  public async getTasks(): Promise<Task[]> {
+  public async getPayments(): Promise<Task[]> {
     return await this.makeGet(ApiService.TASKS_URL, {}, Task);
   }
 
