@@ -57,6 +57,10 @@ export class PaymentsComponent implements OnInit {
   clickAddPayment() {
     this.isEditing = false; // entra em modo edição
     this.formValue.reset(); // reseta o form
+
+    let d = new Date('2013-03-10T02:00:00Z');
+    d.setFullYear(d.getFullYear() - 18);
+    console.log(d.toLocaleDateString('pt-BR').split('/').reverse().join('-'));
   }
 
   setPayments() {

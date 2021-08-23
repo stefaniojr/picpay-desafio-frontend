@@ -26,7 +26,8 @@ header {
 }
 
 .meus-pagamentos-text {
-  font-size: 34px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
   font-weight: 600;
 }
 
@@ -50,4 +51,26 @@ input{
 
 .form-check-input{
   cursor: pointer;
+}
+
+th{
+  color: black;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+td{
+  color: black;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.secondary-text{
+  color: #69788C;
+  font-size: 12px;
+}
+
+.form-check-input{
+  width: 20px; 
+  height: 20px;
 }

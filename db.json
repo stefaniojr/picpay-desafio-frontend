@@ -5,7 +5,7 @@
       "name": "Misty Rawcliffe",
       "username": "mrawcliffed",
       "title": "General Manager",
-      "value": 128.15,
+      "value": 69.69,
       "date": "2020-08-09T21:10:44Z",
       "image": "https://robohash.org/enimmolestiaeperspiciatis.png?size=150x150&set=set1",
       "isPayed": true
@@ -18,7 +18,7 @@
       "value": 316.34,
       "date": "2020-10-12T03:18:18Z",
       "image": "https://robohash.org/suscipitcommodiunde.png?size=150x150&set=set1",
-      "isPayed": false
+      "isPayed": true
     },
     {
       "id": 17,
@@ -58,7 +58,7 @@
       "value": 487.82,
       "date": "2020-06-25T02:31:47Z",
       "image": "https://robohash.org/quolaboriosameum.png?size=150x150&set=set1",
-      "isPayed": true
+      "isPayed": false
     },
     {
       "id": 21,
@@ -168,7 +168,7 @@
       "value": 47.33,
       "date": "2020-04-18T04:39:21Z",
       "image": "https://robohash.org/nonarchitectout.png?size=150x150&set=set1",
-      "isPayed": false
+      "isPayed": true
     },
     {
       "id": 32,
@@ -178,7 +178,7 @@
       "value": 292.38,
       "date": "2020-07-16T10:44:29Z",
       "image": "https://robohash.org/officiisoditomnis.png?size=150x150&set=set1",
-      "isPayed": true
+      "isPayed": false
     },
     {
       "id": 33,
@@ -208,7 +208,7 @@
       "value": 36.41,
       "date": "2020-12-08T07:57:43Z",
       "image": "https://robohash.org/siterrorullam.png?size=150x150&set=set1",
-      "isPayed": false
+      "isPayed": true
     },
     {
       "id": 36,
@@ -218,7 +218,7 @@
       "value": 192.06,
       "date": "2020-05-23T07:57:47Z",
       "image": "https://robohash.org/exsimiliqueofficia.png?size=150x150&set=set1",
-      "isPayed": true
+      "isPayed": false
     },
     {
       "id": 37,
@@ -1558,66 +1558,6 @@
       "value": 207.4,
       "date": "2021-05-05T10:22:13Z",
       "image": "https://robohash.org/illumexpeditadeleniti.png?size=150x150&set=set1",
-      "isPayed": true
-    },
-    {
-      "id": 171,
-      "name": "João Salvia",
-      "username": "jottasalvia",
-      "title": "Creche",
-      "value": "199.8",
-      "date": "13/06/2021",
-      "image": "",
-      "isPayed": false
-    },
-    {
-      "id": 172,
-      "name": "Stefânio Jr",
-      "username": "stefaniojr",
-      "title": "Livros",
-      "value": 13.34,
-      "date": "13/03/2021",
-      "image": "",
-      "isPayed": false
-    },
-    {
-      "id": 173,
-      "name": "dsfdf",
-      "username": "dsfsdf",
-      "title": "fdsfsdf",
-      "value": 123.32,
-      "date": "sfdsf",
-      "image": "",
-      "isPayed": false
-    },
-    {
-      "id": 174,
-      "name": "Amanda Limaa",
-      "username": "amandalima",
-      "title": "Sorvete",
-      "value": 34.32,
-      "date": "13/03/2021",
-      "image": "",
-      "isPayed": false
-    },
-    {
-      "id": 175,
-      "name": "Jumildo Serrra",
-      "username": "juserra",
-      "title": "Agiota",
-      "value": 199.98,
-      "date": "13/03/2013",
-      "image": "",
-      "isPayed": true
-    },
-    {
-      "id": 176,
-      "name": "Marcos",
-      "username": "mrcs",
-      "title": "Alguma Coisa",
-      "value": 18.32,
-      "date": "13/03/2019",
-      "image": "",
       "isPayed": true
     }
   ],
