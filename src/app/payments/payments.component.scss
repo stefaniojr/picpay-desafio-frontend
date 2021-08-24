@@ -27,7 +27,7 @@ header {
 
 // tipografia de "meus pagamentos"
 .meus-pagamentos-text {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 36px;
   font-weight: 600;
   font-style: normal;
@@ -35,71 +35,70 @@ header {
   letter-spacing: 0em;
 }
 
-.usuario-nome-text{
+.usuario-nome-text {
   font-weight: 600;
 }
 
-table{
+table {
   width: 100%;
 }
 
-.icon{
+.icon {
   margin-left: 5px;
   margin-right: 5px;
   cursor: pointer;
 }
 
-input{
+input {
   width: 25%;
 }
 
 // define tipografia para tabela
-th{
+th {
   color: black;
   font-weight: 700;
   font-size: 14px;
 }
 
-td{
+td {
   color: black;
   font-weight: 400;
   font-size: 14px;
 }
 
 // tipografia do texto abaixo de algumas informações
-.secondary-text{
-  color: #69788C;
+.secondary-text {
+  color: #69788c;
   font-size: 12px;
 }
 
 // seta checkbox em tamanho fixo
 
-.form-check-input{
-  width: 20px; 
+.form-check-input {
+  width: 20px;
   height: 20px;
 }
 
 // pointer quando passa por cima da checkbox
-.form-check-input{
+.form-check-input {
   cursor: pointer;
 }
 
 // muda tipografia do titulo do modal
-.modal-title{
-  font-family: 'Montserrat', sans-serif;
+.modal-title {
+  font-family: "Montserrat", sans-serif;
   font-size: 18px;
   font-weight: 700;
 }
 
-
 // centraliza modal
 .modal {
   text-align: center;
-  padding: 0!important;
+  padding: 0 !important;
 }
 
 .modal:before {
-  content: '';
+  content: "";
   display: inline-block;
   height: 100%;
   vertical-align: middle;

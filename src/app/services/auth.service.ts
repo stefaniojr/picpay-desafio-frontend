@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { classToPlain } from 'class-transformer';
-import { BehaviorSubject } from 'rxjs';
-import { Token } from './../login/models/token.model';
-import { StorageService } from './storage.service';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { classToPlain } from "class-transformer";
+import { BehaviorSubject } from "rxjs";
+import { Token } from "./../login/models/token.model";
+import { StorageService } from "./storage.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthService {
   public loggedIn = new BehaviorSubject(null);
   public loggedOut = new BehaviorSubject(null);
 
-  key = 'token';
+  key = "token";
 
   constructor(private storage: StorageService, private router: Router) {}
 
@@ -31,7 +31,7 @@ export class AuthService {
   public async logout(): Promise<void> {
     await this.storage.clear();
     this.loggedOut.next(true);
-    this.router.navigate(['/login']);
+    this.router.navigate(["/login"]);
   }
 
   /**

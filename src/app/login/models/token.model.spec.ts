@@ -1,7 +1,7 @@
-import { Token } from './token.model';
+import { Token } from "./token.model";
 
-describe('Token', () => {
-  it('should create an instance', () => {
+describe("Token", () => {
+  it("should create an instance", () => {
     expect(new Token()).toBeTruthy();
   });
 });

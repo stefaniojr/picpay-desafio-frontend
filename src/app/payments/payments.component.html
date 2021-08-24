@@ -130,12 +130,13 @@
                         </div>
                         <div class="row">
                             <div class="mb-3 col-8">
-                                <input type="datetime-local" formControlName="date" class="form-control w-100" placeholder="Data" step="1">
+                                <input type="datetime-local" formControlName="date" class="form-control w-100"
+                                    placeholder="Data" step="1">
                             </div>
                             <div class="mb-3 col-4">
                                 <!-- input do módulo de máscara para currency -->
-                                <input currencyMask formControlName="value" class="form-control w-100" placeholder="Valor"
-                                    [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
+                                <input currencyMask formControlName="value" class="form-control w-100"
+                                    placeholder="Valor" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
                             </div>
                         </div>
                     </form>
@@ -143,10 +144,10 @@
                 <div class="modal-footer">
                     <button type="button" id="cancelPayment" class="btn btn-secondary"
                         data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" (click)="newPayment()" class="btn btn-primary" [disabled]="!formValue.valid || !formValue.dirty"
-                        *ngIf="!isEditing">Salvar</button>
-                    <button type="button" (click)="changePayment()" class="btn btn-primary" [disabled]="!formValue.valid || !formValue.dirty"
-                        *ngIf="isEditing">Editar</button>
+                    <button type="button" (click)="newPayment()" class="btn btn-primary"
+                        [disabled]="!formValue.valid || !formValue.dirty" *ngIf="!isEditing">Salvar</button>
+                    <button type="button" (click)="changePayment()" class="btn btn-primary"
+                        [disabled]="!formValue.valid || !formValue.dirty" *ngIf="isEditing">Editar</button>
                 </div>
             </div>
         </div>
