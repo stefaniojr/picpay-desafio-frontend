@@ -116,8 +116,8 @@ export class PaymentsComponent implements OnInit {
 
   onEdit(row: Task) {
     this.isEditing = true; // entra em modo de edição
-    row.date = row.date.replace("Z", ""); // datetime input não aceita formato com Z no final
     this.rowToForm(row); // passa os dados da linha para um form
+    this.formValue.controls['date'].setValue(row.date.replace("Z", ""));// datetime input não aceita formato com Z no final
   }
 
   /**
@@ -189,6 +189,9 @@ export class PaymentsComponent implements OnInit {
     row.isPayed = event.target.checked;
     this.rowToForm(row);
     this.formToObj();
+    // extra: removendo Z a mais.
+    this.paymentObj.date = this.paymentObj.date.slice(0, -1);
+    
 
     try {
       const response = await this.api.updatePayment(this.paymentObj);

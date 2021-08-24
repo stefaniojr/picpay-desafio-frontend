@@ -61,8 +61,8 @@
                     <!-- coluna data -->
                     <ng-container matColumnDef="date">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Data</th>
-                        <td mat-cell *matCellDef="let row"> {{row.date | date:'dd/MM/yyyy'}}<br><span
-                                class="secondary-text">{{row.date | date:'hh:mm a'}}</span></td>
+                        <td mat-cell *matCellDef="let row"> {{row.date | date:'dd/MM/yyyy': 'UTC'}}<br><span
+                                class="secondary-text">{{row.date | date:'hh:mm a': 'UTC'}}</span></td>
                     </ng-container>
                     <!-- coluna valor -->
                     <ng-container matColumnDef="value">
@@ -160,8 +160,8 @@
                 </div>
                 <div class="modal-body">
                     <p>Usuário: {{paymentToDelete.name}}</p>
-                    <p>Data: {{paymentToDelete.date}}</p>
-                    <p>Valor: R${{paymentToDelete.value}}</p>
+                    <p>Data: {{paymentToDelete.date | date:'dd/MM/yyyy': 'UTC'}}</p>
+                    <p>Valor: {{paymentToDelete.value | currency : 'BRL'}}</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="cancelDeletePayment" class="btn btn-secondary"
