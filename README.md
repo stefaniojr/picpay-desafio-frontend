@@ -1,6 +1,6 @@
 # **PayFriends**
 
-PayFriends é uma aplicação em angular em que um usuário pode adicionar, alterar e deletar pagamentos. Além disso, ele pode realizar o login e logout nela, respeitando as proteções de rota. A aplicação foi desenvolvida utilizando algumas libs bem populares como Angular Material e Bootstrap.
+PayFriends é uma aplicação em Angular em que um usuário pode adicionar, alterar e deletar pagamentos. Além disso, ele pode realizar o login e logout nela, respeitando as proteções de rota. A aplicação foi desenvolvida utilizando algumas libs bem populares como Angular Material e Bootstrap.
 
 ## Setup do projeto
 
@@ -24,6 +24,8 @@ Para rodar (deixar aberto em uma outra aba do terminal, para que ele fique escut
 
 `npm run api`
 
+O endpoint estará disponível na porta `http://localhost:3000/`
+
 **Rotas:** <br />
 `GET: /tasks`<br />
 `POST: /tasks`<br />
@@ -39,15 +41,10 @@ Para rodar (deixar aberto em uma outra aba do terminal, para que ele fique escut
 <br/>
 
 *Extra*</br>
-A aplicação faz uso do json-server-auth (Ver https://www.npmjs.com/package/json-server-auth)
-Para adicionar um novo usuário, utilize o endpoint:
+A aplicação faz uso do json-server-auth (Ver https://www.npmjs.com/package/json-server-auth). Para adicionar um novo usuário, utilize o endpoint:
 
 `POST: /REGISTER` <br />
 
-Assim, um novo usuário será criado com uma senha criptografada no arquivo db.json. O usuário de teste *também está com uma senha criptograda*, portanto, abaixo são exibidas as informações de acesso do mesmo:
+Assim, um novo usuário será criado com uma senha criptografada no arquivo db.json. O usuário de teste **também está com uma senha criptograda**, portanto, abaixo são exibidas as informações de acesso do mesmo:
 
 `{ "email": "usuario@gmail.com", "password": "usuario" }`
-
-<br/>
-
-**BOA SORTE !** 😉😉😉
