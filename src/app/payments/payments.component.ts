@@ -63,6 +63,7 @@ export class PaymentsComponent implements OnInit {
     // recupera dados para a tabela e possibilita ordenação e paginação.
     this.api.getPayments().then((response) => {
       this.payments = response;
+      
       this.dataSource = new MatTableDataSource(this.payments);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
@@ -71,11 +72,7 @@ export class PaymentsComponent implements OnInit {
 
   async newPayment() {
     // passa valores do form para o objeto auxiliar.
-    this.paymentObj.name = this.formValue.value.name;
-    this.paymentObj.username = this.formValue.value.username;
-    this.paymentObj.title = this.formValue.value.title;
-    this.paymentObj.value = this.formValue.value.value;
-    this.paymentObj.date = this.formValue.value.date;
+    this.formToObj();
 
     try {
       const response = await this.api.addPayment(this.paymentObj);
@@ -110,6 +107,7 @@ export class PaymentsComponent implements OnInit {
 
   onEdit(row: Task) {
     this.isEditing = true; // entra em modo de edição
+    row.date = row.date.replace("Z", ""); // datetime input não aceita formato com Z no final
     this.rowToForm(row); // passa os dados da linha para um form
   }
 
@@ -132,7 +130,7 @@ export class PaymentsComponent implements OnInit {
     this.paymentObj.username = this.formValue.value.username;
     this.paymentObj.title = this.formValue.value.title;
     this.paymentObj.value = this.formValue.value.value;
-    this.paymentObj.date = this.formValue.value.date;
+    this.paymentObj.date = this.formValue.value.date + "Z"; // formato do datetime input não traz o Z no final
     this.paymentObj.image = this.formValue.value.image;
     this.paymentObj.isPayed = this.formValue.value.isPayed;
   }
@@ -178,4 +176,5 @@ export class PaymentsComponent implements OnInit {
       alert('Algo deu errado. Tente novamente!');
     }
   }
+
 }
