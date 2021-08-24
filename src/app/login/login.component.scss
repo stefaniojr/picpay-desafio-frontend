@@ -1,41 +1,44 @@
-html{
-    margin: 0 auto;
+html {
+  margin: 0 auto;
 }
 
-.login-form-side{
-    float:left;
-    display: flex;
-    flex-direction: column;
-    background: #f2f2f2;
-    width:37.5%;
-    height: 100vh;
+.login-form-side {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  background: #f2f2f2;
+  width: 37.5%;
+  height: 100vh;
 }
 
-.form-wrapper{
-    margin: auto auto;
+.form-wrapper {
+  margin: auto auto;
 }
 
-.landing-art-side{
-    float:right;
-    background: white;
-    width:62.5%;
-    height: 100vh;
+.landing-art-side {
+  float: right;
+  background: white;
+  width: 62.5%;
+  height: 100vh;
 }
 
-.centering-content{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+.centering-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.welcome-text{
-    font-weight: 600;
-    font-size: 30px;
-    display: block;
-    font-family: 'Montserrat', sans-serif;
+.welcome-text {
+  font-weight: 600;
+  font-size: 30px;
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  line-height: 37px;
+  letter-spacing: 0em;
 }
 
-.form-group{
-    margin: 20px 0;
+.form-group {
+  margin: 20px 0;
 }
