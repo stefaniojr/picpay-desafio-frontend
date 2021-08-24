@@ -59,6 +59,9 @@ export class PaymentsComponent implements OnInit {
     this.formValue.reset(); // reseta o form
   }
 
+  /**
+  * Recupera pagamentos da api para a tabela
+  */
   setPayments() {
     // recupera dados para a tabela e possibilita ordenação e paginação.
     this.api.getPayments().then((response) => {
@@ -70,6 +73,9 @@ export class PaymentsComponent implements OnInit {
     });
   }
 
+  /**
+  * Inicia um novo pagamento e carrega para a API
+  */
   async newPayment() {
     // passa valores do form para o objeto auxiliar.
     this.formToObj();
@@ -92,6 +98,9 @@ export class PaymentsComponent implements OnInit {
     this.paymentToDelete = row;
   }
 
+  /**
+  * Remove um pagamento e fecha o modal
+  */
   async removePayment() {
     try {
       const response = await this.api.deletePayment(this.paymentToDelete);
@@ -111,6 +120,10 @@ export class PaymentsComponent implements OnInit {
     this.rowToForm(row); // passa os dados da linha para um form
   }
 
+  /**
+  * Passa itens da linha selecionada para o form
+  * @param linha da tabela selecionada
+  */
   rowToForm(row: Task) {
     // setando valores da tabela selecionada
     this.formValue.controls['id'].setValue(row.id);
@@ -123,6 +136,9 @@ export class PaymentsComponent implements OnInit {
     this.formValue.controls['isPayed'].setValue(row.isPayed);
   }
 
+  /**
+  * Passa os dados do form para o objeto auxiliar
+  */
   formToObj() {
     // atualizando valores editados no modal
     this.paymentObj.id = this.formValue.value.id;
@@ -135,6 +151,9 @@ export class PaymentsComponent implements OnInit {
     this.paymentObj.isPayed = this.formValue.value.isPayed;
   }
 
+  /**
+  * Edita os campos de um pagamento e dá um put na API
+  */
   async changePayment() {
     this.formToObj();
 
@@ -152,16 +171,19 @@ export class PaymentsComponent implements OnInit {
     }
   }
 
-  public async logout() {
-    // logout da aplicação.
-    await this.auth.logout();
-  }
-
+  /**
+  * Filtra a pesquisa
+  */
   filter(event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase(); // filtra a pesquisa
   }
 
+  /**
+  * Atualiza o checkbox na API
+  * @param evento do checkbox
+  * @param linha selecionada
+  */
   async onChangeCheckBox(event, row: Task) {
     // constroi objeto com os valores da linha
     row.isPayed = event.target.checked;
@@ -175,6 +197,11 @@ export class PaymentsComponent implements OnInit {
     } catch (e) {
       alert('Algo deu errado. Tente novamente!');
     }
+  }
+
+  public async logout() {
+    // logout da aplicação.
+    await this.auth.logout();
   }
 
 }

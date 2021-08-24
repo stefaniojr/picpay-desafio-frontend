@@ -23,6 +23,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  /**
+  * Realiza login do usuário e redireciona para a rota path
+  */
   public async onLogin() {
     if (this.form.valid) {
       this.loading = true; // inicia carregamento

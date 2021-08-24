@@ -25,6 +25,7 @@ header {
   color: white;
 }
 
+// tipografia de "meus pagamentos"
 .meus-pagamentos-text {
   font-family: 'Montserrat', sans-serif;
   font-size: 36px;
@@ -49,10 +50,7 @@ input{
   width: 25%;
 }
 
-.form-check-input{
-  cursor: pointer;
-}
-
+// define tipografia para tabela
 th{
   color: black;
   font-weight: 700;
@@ -65,12 +63,48 @@ td{
   font-size: 14px;
 }
 
+// tipografia do texto abaixo de algumas informações
 .secondary-text{
   color: #69788C;
   font-size: 12px;
 }
 
+// seta checkbox em tamanho fixo
+
 .form-check-input{
   width: 20px; 
   height: 20px;
+}
+
+// pointer quando passa por cima da checkbox
+.form-check-input{
+  cursor: pointer;
+}
+
+// muda tipografia do titulo do modal
+.modal-title{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
+// centraliza modal
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px; /* Adjusts for spacing */
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
 }

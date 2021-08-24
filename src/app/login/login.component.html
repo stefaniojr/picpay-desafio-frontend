@@ -14,7 +14,7 @@
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Senha" formControlName="password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-xs col-12 w-100">ENTRAR</button>
+                        <button type="submit" class="btn btn-primary btn-xs col-12 w-100" [disabled]="!form.valid || !form.dirty">ENTRAR</button>
                     </form>   
             </div>
         </div>
