@@ -6,18 +6,8 @@
       "username": "mrawcliffed",
       "title": "General Manager",
       "value": 69.69,
-      "date": "2020-08-11T21:10:50Z",
+      "date": "2021-08-23T01:16:03Z",
       "image": "https://robohash.org/enimmolestiaeperspiciatis.png?size=150x150&set=set1",
-      "isPayed": true
-    },
-    {
-      "id": 16,
-      "name": "Viviyan Birdwhistell",
-      "username": "vbirdwhistellf",
-      "title": "Product Engineer",
-      "value": 316.34,
-      "date": "2020-10-12T03:18:18Z",
-      "image": "https://robohash.org/suscipitcommodiunde.png?size=150x150&set=set1",
       "isPayed": true
     },
     {
@@ -38,7 +28,7 @@
       "value": 86.23,
       "date": "2020-10-22T04:24:29Z",
       "image": "https://robohash.org/ametperferendisoccaecati.png?size=150x150&set=set1",
-      "isPayed": true
+      "isPayed": false
     },
     {
       "id": 19,
@@ -48,7 +38,7 @@
       "value": 201.28,
       "date": "2021-02-15T18:14:35Z",
       "image": "https://robohash.org/dolorautest.png?size=150x150&set=set1",
-      "isPayed": true
+      "isPayed": false
     },
     {
       "id": 20,
@@ -138,7 +128,7 @@
       "value": 247.23,
       "date": "2020-03-14T14:49:39Z",
       "image": "https://robohash.org/autettempora.png?size=150x150&set=set1",
-      "isPayed": true
+      "isPayed": false
     },
     {
       "id": 29,
@@ -209,16 +199,6 @@
       "date": "2020-12-08T07:57:43Z",
       "image": "https://robohash.org/siterrorullam.png?size=150x150&set=set1",
       "isPayed": true
-    },
-    {
-      "id": 36,
-      "name": "Ezechiel Hicks",
-      "username": "ehicksz",
-      "title": "Operator",
-      "value": 192.06,
-      "date": "2020-05-23T07:57:47Z",
-      "image": "https://robohash.org/exsimiliqueofficia.png?size=150x150&set=set1",
-      "isPayed": false
     },
     {
       "id": 37,
@@ -608,7 +588,7 @@
       "value": 62.33,
       "date": "2020-04-22T02:27:21Z",
       "image": "https://robohash.org/aperiamundedolorum.png?size=150x150&set=set1",
-      "isPayed": true
+      "isPayed": false
     },
     {
       "id": 76,
@@ -1568,7 +1548,7 @@
       "value": 7.85,
       "date": "2021-08-23T22:19:53Z",
       "image": null,
-      "isPayed": true
+      "isPayed": false
     },
     {
       "id": 172,
@@ -1629,6 +1609,16 @@
       "date": "2021-03-16T22:46:48Z",
       "image": null,
       "isPayed": null
+    },
+    {
+      "id": 178,
+      "name": "Juliana Almeida",
+      "username": "jualmeida",
+      "title": "Bolo",
+      "value": 29.99,
+      "date": "2021-08-03T23:53:55Z",
+      "image": null,
+      "isPayed": false
     }
   ],
   "users": [
