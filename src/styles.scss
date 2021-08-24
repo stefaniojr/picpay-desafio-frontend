@@ -2,11 +2,20 @@
 
 @import '~@angular/material/theming';
 
-$custom-typography: mat-typography-config($font-family: '"Lato", sans-serif;');
+$custom-typography: mat-typography-config(
+  $font-family: '"Lato", sans-serif;',
+);
 @include mat-core($custom-typography);
 
 * {
   box-sizing: border-box;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: #007dfe !important;
 }
 
 html,
@@ -16,9 +25,12 @@ body {
   padding: 0;
 }
 
-button{
+button {
   font-size: 14px !important;
   font-weight: 500 !important;
   text-transform: uppercase !important;
   letter-spacing: 1.25px !important;
+  font-style: normal !important;
+  line-height: 16px !important;
+  height: 36px !important; 
 }
