@@ -6,7 +6,7 @@ import { Task } from './models/task.model';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-payments',
@@ -43,11 +43,11 @@ export class PaymentsComponent implements OnInit {
   async ngOnInit() {
     this.formValue = this.fb.group({
       id: new FormControl(this.paymentObj.id),
-      name: new FormControl(this.paymentObj.name),
-      username: new FormControl(this.paymentObj.username),
+      name: new FormControl(this.paymentObj.name, Validators.required),
+      username: new FormControl(this.paymentObj.username, Validators.required),
       title: new FormControl(this.paymentObj.title),
-      value: new FormControl(this.paymentObj.value),
-      date: new FormControl(this.paymentObj.date),
+      value: new FormControl(this.paymentObj.value, Validators.required),
+      date: new FormControl(this.paymentObj.date, Validators.required),
       image: new FormControl(this.paymentObj.image),
       isPayed: new FormControl(this.paymentObj.isPayed),
     });
